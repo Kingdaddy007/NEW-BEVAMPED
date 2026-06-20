@@ -65,54 +65,81 @@ function initLoader() {
 
   const tl = gsap.timeline();
 
-  // Action 1: Spotlight turns on slowly to illuminate the logo
-  tl.to('.spotlight', { scale: 1, duration: 1.5, ease: "power2.out" });
+  // Set initial states
+  gsap.set('.loader-be', { x: -80, opacity: 0 });
+  gsap.set('.loader-vamped', { x: 80, opacity: 0 });
 
-  // Action 2: Hold the spotlight for a moment (simulating load)
-  tl.to('.spotlight', { scale: 1.1, duration: 1.5, ease: "none" });
-
-  // Action 3: Loading complete. Spotlight expands massively to wash the screen
-  tl.to('.spotlight', {
-    scale: 15, // Massive expansion
-    opacity: 0.5,
-    duration: 1.5,
-    ease: "power3.inOut"
+  // Action 1: Fade in the split logo (Perception Gap is wide)
+  tl.to(['.loader-be', '.loader-vamped'], {
+    opacity: 1,
+    duration: 1.2,
+    ease: "power2.out"
   });
 
-  // Action 4: Logo fades out
-  tl.to('.loader-content', {
-    opacity: 0,
-    y: -20,
-    duration: 0.8,
-    ease: "power2.in"
-  }, "-=1.2");
+  // Hold for a moment to establish the gap
+  tl.to({}, { duration: 0.5 });
 
-  // Action 5: Entire black loader screen fades away, flooded by the spotlight
-  tl.to(loaderScreen, {
+  // Action 2: Slide together (Closing the Perception Gap)
+  tl.to('.loader-be', {
+    x: 0,
+    duration: 1.2,
+    ease: "power3.inOut"
+  }, "join");
+  
+  tl.to('.loader-vamped', {
+    x: 0,
+    duration: 1.2,
+    ease: "power3.inOut"
+  }, "join");
+
+  // Hold for the click moment
+  tl.to({}, { duration: 0.4 });
+
+  // Action 3: The Wipe (Gallery Doors split open)
+  // First, fade the logo slightly
+  tl.to('.loader-logo-split', {
     opacity: 0,
-    duration: 1.5,
-    ease: "power2.inOut",
+    scale: 0.95,
+    duration: 0.8,
+    ease: "power2.inOut"
+  }, "wipe");
+
+  // Wipe the doors
+  tl.to('.loader-door.top', {
+    yPercent: -100,
+    duration: 1.4,
+    ease: "power3.inOut"
+  }, "wipe+=0.2");
+  
+  tl.to('.loader-door.bottom', {
+    yPercent: 100,
+    duration: 1.4,
+    ease: "power3.inOut"
+  }, "wipe+=0.2");
+
+  // Action 4: Clean up loader DOM and dispatch event
+  tl.set(loaderScreen, {
+    display: 'none',
     onComplete: () => {
-      loaderScreen.style.display = 'none';
       document.body.classList.remove('loader-active');
       document.dispatchEvent(new Event('loaderComplete')); // Release all blocked ScrollTriggers
     }
-  }, "-=1.0");
+  });
 
-  // Action 6: Spatial Light Reveal for Hero text (Word by Word)
+  // Action 5: Spatial Light Reveal for Hero text (Word by Word)
   tl.to('.hero-word', {
     y: '0%',
     opacity: 1,
     duration: 1.2,
-    stagger: 0.15, // Meaningful, human-paced pause between words
+    stagger: 0.15,
     ease: 'power3.out'
-  }, "-=0.8"); // Delayed so the spotlight wash completes first
+  }, "wipe+=0.6"); 
 
   // Action 6: Fade in subtext and capabilities
   tl.fromTo('.hero-subtext, .hero-capabilities', 
     { y: 30, opacity: 0 },
     { y: 0, opacity: 1, duration: 1.2, ease: 'power3.out', stagger: 0.2 },
-    "-=1.0"
+    "wipe+=1.0"
   );
 }
 

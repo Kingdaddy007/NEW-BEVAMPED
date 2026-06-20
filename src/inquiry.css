@@ -15,24 +15,32 @@ body.inquiry-page {
   left: 0;
   width: 100vw;
   height: 100vh;
-  background-color: var(--vamped-bg); /* Pitch black loader */
   z-index: 9999;
   display: flex;
   justify-content: center;
   align-items: center;
   overflow: hidden;
-  transform-origin: center;
+  pointer-events: auto;
 }
 
-/* The Spotlight Effect */
-.spotlight {
+.loader-door {
   position: absolute;
-  width: 400px;
-  height: 400px;
-  background: radial-gradient(circle, rgba(212,175,55,0.15) 0%, rgba(5,5,5,0) 70%);
-  border-radius: 50%;
+  left: 0;
+  width: 100vw;
+  height: 50vh;
+  background-color: var(--vamped-ivory);
   z-index: 1;
-  transform: scale(0);
+  will-change: transform;
+}
+
+.loader-door.top {
+  top: 0;
+  transform-origin: top center;
+}
+
+.loader-door.bottom {
+  bottom: 0;
+  transform-origin: bottom center;
 }
 
 .loader-content {
@@ -42,13 +50,27 @@ body.inquiry-page {
   align-items: center;
 }
 
-.loader-logo {
-  color: var(--vamped-ivory);
-  font-family: var(--vamped-ui);
-  font-size: 1.25rem;
-  font-weight: 700;
-  letter-spacing: 0.1em;
-  opacity: 1; /* GSAP will fade it out */
+.loader-logo-split {
+  display: flex;
+  align-items: center;
+  gap: 0;
+}
+
+.loader-be {
+  color: var(--vamped-gold);
+  font-family: var(--vamped-heading);
+  font-size: clamp(2.5rem, 6vw, 4rem);
+  font-weight: 800;
+  opacity: 0;
+}
+
+.loader-vamped {
+  color: var(--vamped-bg);
+  font-family: var(--vamped-sans);
+  font-size: clamp(2.1rem, 5vw, 3.3rem);
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  opacity: 0;
 }
 
 
