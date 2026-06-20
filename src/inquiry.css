@@ -591,8 +591,10 @@ body.inquiry-page {
   pointer-events: auto; /* explicitly allow */
 }
 
-.engage-features li:hover {
-  transform: translateX(10px); /* Micro-interaction */
+@media (hover: hover) {
+  .engage-features li:hover {
+    transform: translateX(10px); /* Micro-interaction */
+  }
 }
 
 .light-col .engage-features li {
@@ -1018,7 +1020,12 @@ body.inquiry-page {
 
 .menu-link:hover {
   color: var(--vamped-gold);
-  padding-left: clamp(2.5rem, 4vw, 4rem); /* Shift right on hover to make room for indicator */
+}
+
+@media (hover: hover) {
+  .menu-link:hover {
+    padding-left: clamp(2.5rem, 4vw, 4rem); /* Shift right on hover to make room for indicator */
+  }
 }
 
 /* Contact Column */
@@ -1179,7 +1186,12 @@ body.inquiry-page {
 
 .faq-question:hover {
   color: var(--vamped-gold);
-  transform: translateX(10px);
+}
+
+@media (hover: hover) {
+  .faq-question:hover {
+    transform: translateX(10px);
+  }
 }
 
 .faq-question::after {
