@@ -1,0 +1,24 @@
+{
+  "name": "bevamped-clean-export",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Kingdaddy007/NEW-BEVAMPED.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/Kingdaddy007/NEW-BEVAMPED/issues"
+  },
+  "homepage": "https://github.com/Kingdaddy007/NEW-BEVAMPED#readme",
+  "devDependencies": {
+    "vite": "^8.0.16"
+  }
+}
