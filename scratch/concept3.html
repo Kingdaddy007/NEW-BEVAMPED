@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Concept 3: The Slow Burn (Preview)</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant:ital,wght@0,300..700;1,300..700&family=Jost:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --vamped-bg: #111111;
+            --vamped-ivory: #F8F5F0;
+        }
+        
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Jost', sans-serif;
+            background-color: var(--vamped-ivory);
+            color: var(--vamped-bg);
+            overflow: hidden; 
+        }
+
+        .hero-section {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 5vw;
+        }
+
+        .hero-text {
+            font-family: 'Cormorant', serif;
+            font-size: 7vw;
+            line-height: 1.1;
+            letter-spacing: -0.02em;
+            text-align: center;
+        }
+
+        .reveal-mask {
+            overflow: hidden;
+            display: inline-block;
+            vertical-align: top;
+            padding-bottom: 0.1em; 
+            margin-bottom: -0.1em;
+        }
+
+        .char {
+            display: inline-block;
+        }
+
+        /* The Loader Screen */
+        #loader-screen {
+            position: fixed;
+            top: 0; left: 0; width: 100vw; height: 100vh;
+            background-color: #000000; /* Pure Obsidian */
+            z-index: 9999;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .logo {
+            color: var(--vamped-ivory);
+            font-family: 'Jost', sans-serif;
+            font-size: 1rem;
+            letter-spacing: 0.4em;
+            font-weight: 400;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Hero Underneath -->
+    <section class="hero-section">
+        <h1 class="hero-text" id="hero-title">
+            <span class="reveal-mask"><span class="char">D</span></span><span class="reveal-mask"><span class="char">i</span></span><span class="reveal-mask"><span class="char">g</span></span><span class="reveal-mask"><span class="char">i</span></span><span class="reveal-mask"><span class="char">t</span></span><span class="reveal-mask"><span class="char">a</span></span><span class="reveal-mask"><span class="char">l</span></span>
+            &nbsp;
+            <span class="reveal-mask"><span class="char">S</span></span><span class="reveal-mask"><span class="char">p</span></span><span class="reveal-mask"><span class="char">a</span></span><span class="reveal-mask"><span class="char">t</span></span><span class="reveal-mask"><span class="char">i</span></span><span class="reveal-mask"><span class="char">a</span></span><span class="reveal-mask"><span class="char">l</span></span>
+            <br>
+            <span class="reveal-mask"><span class="char">A</span></span><span class="reveal-mask"><span class="char">r</span></span><span class="reveal-mask"><span class="char">c</span></span><span class="reveal-mask"><span class="char">h</span></span><span class="reveal-mask"><span class="char">i</span></span><span class="reveal-mask"><span class="char">t</span></span><span class="reveal-mask"><span class="char">e</span></span><span class="reveal-mask"><span class="char">c</span></span><span class="reveal-mask"><span class="char">t</span></span><span class="reveal-mask"><span class="char">u</span></span><span class="reveal-mask"><span class="char">r</span></span><span class="reveal-mask"><span class="char">e</span></span><span class="reveal-mask"><span class="char">.</span></span>
+        </h1>
+    </section>
+
+    <!-- The Loader -->
+    <div id="loader-screen">
+        <div class="logo">BEVAMPED</div>
+    </div>
+
+    <!-- GSAP -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const tl = gsap.timeline();
+
+            // Set initial state for hero text
+            gsap.set('.char', { y: '100%', opacity: 0 });
+
+            // 1. Logo fades out extremely slowly (luxurious timing)
+            tl.to('.logo', { opacity: 0, duration: 1.5, delay: 0.8, ease: "power2.inOut" });
+
+            // 2. The main black background fades to transparent over a long duration
+            tl.to('#loader-screen', {
+                opacity: 0,
+                duration: 2.5,
+                ease: "power1.inOut",
+                onComplete: () => {
+                    document.getElementById('loader-screen').style.display = 'none';
+                    document.body.style.overflow = 'auto'; // allow scrolling again
+                }
+            }, "-=0.5");
+
+            // 3. The Spatial Light Reveal starts EXACTLY as the black background begins fading
+            // This creates the seamless "ghost" transition
+            tl.to('.char', {
+                y: '0%',
+                opacity: 1,
+                duration: 1.8, // Slightly longer duration for the slow burn
+                stagger: 0.04, 
+                ease: "power4.out"
+            }, "-=2.2"); 
+        });
+    </script>
+</body>
+</html>

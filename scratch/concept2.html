@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Preview — Concept B: The Cinematic Crossfade</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Jost:wght@300;400;500;600;700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,400&family=Manrope:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --vamped-bg:    #0A0A0B;
+      --vamped-ivory: #F5F6F8;
+      --vamped-gold:  #D4AF37;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { -webkit-font-smoothing: antialiased; scroll-behavior: auto; }
+    body {
+      background-color: var(--vamped-bg);
+      color: var(--vamped-ivory);
+      font-family: 'Manrope', sans-serif;
+    }
+
+    .spacer {
+      height: 50vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.75rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: rgba(245,246,248,0.2);
+    }
+
+    /* ── Outer section: tall enough for 4 steps ── */
+    .process-pinned-section {
+      /* 100vh for the pinned frame + 100vh per step transition */
+      height: 500vh;
+      position: relative;
+    }
+
+    /* ── The pinned viewport: locks to the screen ── */
+    .pinned-wrapper {
+      position: sticky;
+      top: 0;
+      height: 100vh;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      overflow: hidden;
+    }
+
+    /* ─── LEFT PANEL — giant editorial number ─── */
+    .pinned-left {
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-right: 1px solid rgba(245,246,248,0.05);
+      overflow: hidden;
+    }
+
+    /* Subtle vertical label */
+    .left-label {
+      position: absolute;
+      left: 3rem;
+      top: 50%;
+      transform: translateY(-50%) rotate(-90deg);
+      transform-origin: center center;
+      font-size: 0.6rem;
+      font-weight: 700;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: rgba(245,246,248,0.18);
+      white-space: nowrap;
+    }
+
+    .giant-number {
+      position: absolute;
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-size: clamp(14rem, 28vw, 28rem);
+      font-weight: 300;
+      font-style: italic;
+      color: transparent;
+      -webkit-text-stroke: 1px rgba(212, 175, 55, 0.35);
+      line-height: 1;
+      letter-spacing: -0.04em;
+      opacity: 0;
+      user-select: none;
+      will-change: opacity, transform;
+    }
+
+    /* Step 1 starts visible */
+    .giant-number:first-child { opacity: 1; }
+
+    /* ─── RIGHT PANEL — text content ─── */
+    .pinned-right {
+      position: relative;
+      display: flex;
+      align-items: center;
+      padding: 0 8vw 0 6vw;
+      overflow: hidden;
+    }
+
+    /* Eyebrow at the top */
+    .right-eyebrow {
+      position: absolute;
+      top: 3.5rem;
+      left: 6vw;
+      font-size: 0.65rem;
+      font-weight: 700;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: rgba(245,246,248,0.2);
+    }
+
+    /* Step content blocks — absolutely stacked */
+    .step-content {
+      position: absolute;
+      opacity: 0;
+      will-change: opacity, transform;
+    }
+
+    /* Step 1 starts visible */
+    .step-content:first-child { opacity: 1; transform: translateY(0); }
+    .step-content:not(:first-child) { transform: translateY(40px); }
+
+    .step-phase {
+      font-size: 0.65rem;
+      font-weight: 700;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--vamped-gold);
+      margin-bottom: 1.5rem;
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+    }
+    .step-phase::before {
+      content: '';
+      display: block;
+      width: 18px;
+      height: 1px;
+      background: var(--vamped-gold);
+      flex-shrink: 0;
+    }
+
+    .step-title {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-size: clamp(2.5rem, 4vw, 4rem);
+      font-weight: 300;
+      font-style: italic;
+      color: var(--vamped-ivory);
+      line-height: 1.05;
+      letter-spacing: -0.01em;
+      margin-bottom: 2rem;
+    }
+
+    .step-desc {
+      font-size: 1rem;
+      font-weight: 300;
+      line-height: 1.85;
+      color: rgba(245,246,248,0.55);
+      max-width: 420px;
+    }
+
+    /* Accent line below description */
+    .step-accent {
+      margin-top: 2.5rem;
+      width: 40px;
+      height: 1px;
+      background: var(--vamped-gold);
+    }
+
+    /* ── Bottom progress bar ── */
+    .pinned-progress {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 2px;
+      background: rgba(245,246,248,0.06);
+      overflow: hidden;
+    }
+    .pinned-progress-fill {
+      height: 100%;
+      width: 0%;
+      background: linear-gradient(90deg, var(--vamped-gold), rgba(212,175,55,0.3));
+      transform-origin: left;
+    }
+
+    /* ── Step counter (bottom right) ── */
+    .step-counter {
+      position: absolute;
+      bottom: 3rem;
+      right: 8vw;
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-size: 0.85rem;
+      font-style: italic;
+      color: rgba(245,246,248,0.25);
+    }
+    .step-counter .current { color: var(--vamped-gold); }
+  </style>
+</head>
+<body>
+
+  <div class="spacer">↓ Scroll into Concept B ↓</div>
+
+  <!-- CONCEPT B: The Cinematic Crossfade -->
+  <section class="process-pinned-section" id="process-b">
+    <div class="pinned-wrapper" id="pinned-wrapper">
+
+      <!-- LEFT: Giant editorial numbers -->
+      <div class="pinned-left" id="pinned-left">
+        <span class="left-label">// The Process — Concept B: Cinematic Crossfade</span>
+
+        <div class="giant-number" id="num-1">1</div>
+        <div class="giant-number" id="num-2">2</div>
+        <div class="giant-number" id="num-3">3</div>
+        <div class="giant-number" id="num-4">4</div>
+      </div>
+
+      <!-- RIGHT: Text content -->
+      <div class="pinned-right" id="pinned-right">
+        <span class="right-eyebrow">Our Approach</span>
+
+        <div class="step-content" id="content-1">
+          <div class="step-phase">Phase One</div>
+          <h3 class="step-title">Discovery</h3>
+          <p class="step-desc">Uncovering your spatial narrative. We analyze your brand, your best work, and the specific high-net-worth clientele you want to attract.</p>
+          <div class="step-accent"></div>
+        </div>
+
+        <div class="step-content" id="content-2">
+          <div class="step-phase">Phase Two</div>
+          <h3 class="step-title">Curation</h3>
+          <p class="step-desc">Selecting the definitive portfolio assets. We don't show everything. We curate the specific photos and videos that command authority.</p>
+          <div class="step-accent"></div>
+        </div>
+
+        <div class="step-content" id="content-3">
+          <div class="step-phase">Phase Three</div>
+          <h3 class="step-title">Choreography</h3>
+          <p class="step-desc">Programming the motion. We write custom GSAP logic to ensure the web experience feels as tactile and dimensional as a physical room.</p>
+          <div class="step-accent"></div>
+        </div>
+
+        <div class="step-content" id="content-4">
+          <div class="step-phase">Phase Four</div>
+          <h3 class="step-title">Handover</h3>
+          <p class="step-desc">The White-Glove launch. We deploy the site and provide a strategy to leverage it in your high-end sales calls and client pitches.</p>
+          <div class="step-accent"></div>
+        </div>
+
+        <!-- Step counter -->
+        <div class="step-counter">
+          <span class="current" id="counter-current">01</span> / 04
+        </div>
+      </div>
+
+      <!-- Gold progress bar at the very bottom -->
+      <div class="pinned-progress">
+        <div class="pinned-progress-fill" id="progress-fill"></div>
+      </div>
+
+    </div>
+  </section>
+
+  <div class="spacer">— End of Process —</div>
+
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+
+  <script>
+    gsap.registerPlugin(ScrollTrigger);
+
+    const section  = document.getElementById('process-b');
+    const wrapper  = document.getElementById('pinned-wrapper');
+    const fill     = document.getElementById('progress-fill');
+    const counter  = document.getElementById('counter-current');
+
+    const numbers  = ['num-1','num-2','num-3','num-4'].map(id => document.getElementById(id));
+    const contents = ['content-1','content-2','content-3','content-4'].map(id => document.getElementById(id));
+
+    const STEPS   = 4;
+    const SEG_LEN = 1 / (STEPS - 1); // 0.333 per step
+    const LABELS  = ['01','02','03','04'];
+
+    /* ── Master scrubbed timeline ── */
+    const tl = gsap.timeline({
+      scrollTrigger: {
+        trigger: section,
+        start: 'top top',
+        end:   'bottom bottom',
+        pin:   wrapper,
+        scrub: 1.0,
+        onUpdate(self) {
+          // Drive the progress bar width
+          gsap.set(fill, { width: `${self.progress * 100}%` });
+
+          // Update step counter label
+          const step = Math.min(STEPS - 1, Math.floor(self.progress / SEG_LEN + 0.08));
+          counter.textContent = LABELS[step];
+        }
+      }
+    });
+
+    /*
+     * For each transition (steps 0→1, 1→2, 2→3):
+     *   1. Outgoing number fades + scales down slightly
+     *   2. Incoming number fades in + scales up from below
+     *   3. Outgoing text fades out + slides up
+     *   4. Incoming text fades in from below
+     */
+    for (let i = 0; i < STEPS - 1; i++) {
+      const segStart = i * SEG_LEN;
+      const outNum   = numbers[i];
+      const inNum    = numbers[i + 1];
+      const outTxt   = contents[i];
+      const inTxt    = contents[i + 1];
+
+      // -- Outgoing number --
+      tl.to(outNum, {
+        opacity: 0,
+        y: -40,
+        duration: SEG_LEN * 0.6,
+        ease: 'power2.in',
+      }, segStart);
+
+      // -- Incoming number --
+      tl.fromTo(inNum,
+        { opacity: 0, y: 60 },
+        {
+          opacity: 1,
+          y: 0,
+          duration: SEG_LEN * 0.7,
+          ease: 'power3.out',
+        },
+        segStart + SEG_LEN * 0.25 // slight delay so out finishes first
+      );
+
+      // -- Outgoing text (slides up + fades) --
+      tl.to(outTxt, {
+        opacity: 0,
+        y: -30,
+        duration: SEG_LEN * 0.5,
+        ease: 'power2.in',
+      }, segStart);
+
+      // -- Incoming text (slides up from below + fades in) --
+      tl.fromTo(inTxt,
+        { opacity: 0, y: 35 },
+        {
+          opacity: 1,
+          y: 0,
+          duration: SEG_LEN * 0.6,
+          ease: 'power3.out',
+        },
+        segStart + SEG_LEN * 0.35
+      );
+    }
+  </script>
+
+</body>
+</html>

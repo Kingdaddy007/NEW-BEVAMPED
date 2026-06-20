@@ -1,0 +1,60 @@
+{
+  "theme": {
+    "colors": {
+      "bg": {
+        "primary": "#0A0A0B",
+        "surface": "#2E2E2E",
+        "overlay": "rgba(10, 10, 11, 0.8)",
+        "light": "#F5F6F8"
+      },
+      "text": {
+        "primary": "#F5F6F8",
+        "secondary": "#A8A096",
+        "muted": "#596180",
+        "inverse": "#1A1F36"
+      },
+      "accent": {
+        "primary": "#D4AF37",
+        "hover": "#00B3A4"
+      }
+    },
+    "typography": {
+      "fonts": {
+        "display-sans": "Jost, sans-serif",
+        "display-serif": "Cormorant Garamond, Georgia, serif",
+        "body": "Manrope, sans-serif"
+      },
+      "sizes": {
+        "display-xl": "5.5rem",
+        "display-lg": "3.5rem",
+        "body": "1rem",
+        "label": "0.75rem"
+      },
+      "mobile": {
+        "display-xl": "2.75rem",
+        "display-lg": "2rem"
+      }
+    },
+    "grid": {
+      "padding": "10vw",
+      "density-cap": 0.3,
+      "body-width-max": "540px"
+    },
+    "breakpoints": {
+      "sm": "640px",
+      "md": "768px",
+      "lg": "1024px",
+      "xl": "1280px"
+    },
+    "motion": {
+      "duration": {
+        "pillar-entrance": 2.5,
+        "headline-stagger": 1.2
+      },
+      "easing": {
+        "entrance": "power3.out",
+        "text": "power4.out"
+      }
+    }
+  }
+}

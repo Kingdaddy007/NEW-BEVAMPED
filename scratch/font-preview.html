@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Typography Options | BEVAMPED</title>
+  
+  <!-- Load ALL the fonts we discussed -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  
+  <!-- Option 1: The Architectural Avant-Garde -->
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;800&family=Instrument+Serif:ital@0;1&family=Manrope:wght@300;400;600&display=swap" rel="stylesheet">
+  
+  <!-- Option 2: The Editorial Gallery -->
+  <link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400;0,6..96,600;0,6..96,800;1,6..96,400&family=Jost:wght@300;400;600&display=swap" rel="stylesheet">
+  
+  <!-- Option 3: The Quiet Minimalist -->
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&family=Cormorant+Upright:wght@400;600&display=swap" rel="stylesheet">
+  
+  <!-- Previous "Normal" Fonts (For comparison) -->
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;800&family=Inter:wght@300;400;600&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+
+  <style>
+    body {
+      background-color: #1A1F36; /* Navy */
+      color: #F5F6F8; /* Light Grey */
+      margin: 0;
+      padding: 0;
+    }
+    
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 5vh 5vw;
+    }
+
+    h1 {
+      font-family: 'Inter', sans-serif;
+      font-weight: 300;
+      font-size: 1rem;
+      letter-spacing: 2px;
+      color: #D4AF37; /* Gold */
+      margin-bottom: 3rem;
+      border-bottom: 1px solid rgba(255,255,255,0.1);
+      padding-bottom: 1rem;
+    }
+
+    .font-option {
+      margin-bottom: 5rem;
+      padding-bottom: 4rem;
+      border-bottom: 1px solid rgba(255,255,255,0.05);
+    }
+
+    .option-label {
+      font-family: 'Inter', sans-serif;
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      color: #00B3A4; /* Teal Accent */
+      margin-bottom: 2rem;
+    }
+
+    /* Option 1 */
+    .opt1-display { font-family: 'Syne', sans-serif; font-weight: 700; font-size: 4.5rem; line-height: 1.1; margin-bottom: 1rem; }
+    .opt1-accent { font-family: 'Instrument Serif', serif; font-style: italic; font-size: 5rem; font-weight: 400; }
+    .opt1-body { font-family: 'Manrope', sans-serif; font-weight: 300; font-size: 1.25rem; line-height: 1.6; max-width: 600px; color: rgba(245, 246, 248, 0.7); }
+
+    /* Option 2 */
+    .opt2-display { font-family: 'Bodoni Moda', serif; font-weight: 600; font-size: 4.5rem; line-height: 1.1; margin-bottom: 1rem; }
+    .opt2-accent { font-style: italic; font-weight: 400; }
+    .opt2-body { font-family: 'Jost', sans-serif; font-weight: 300; font-size: 1.3rem; line-height: 1.6; max-width: 600px; color: rgba(245, 246, 248, 0.7); }
+
+    /* Option 3 */
+    .opt3-display { font-family: 'Outfit', sans-serif; font-weight: 600; font-size: 4.5rem; line-height: 1.1; margin-bottom: 1rem; letter-spacing: -1px; }
+    .opt3-accent { font-family: 'Cormorant Upright', serif; font-weight: 600; font-size: 1rem; letter-spacing: 2px; color: #D4AF37; text-transform: uppercase; display: block; margin-bottom: 1rem; }
+    .opt3-body { font-family: 'Outfit', sans-serif; font-weight: 300; font-size: 1.25rem; line-height: 1.6; max-width: 600px; color: rgba(245, 246, 248, 0.7); }
+
+    /* Original/Normal */
+    .orig-display { font-family: 'Montserrat', sans-serif; font-weight: 700; font-size: 4rem; line-height: 1.2; margin-bottom: 1rem; letter-spacing: -1px; }
+    .orig-accent { font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 4.5rem; font-weight: 400; }
+    .orig-body { font-family: 'Inter', sans-serif; font-weight: 300; font-size: 1.1rem; line-height: 1.6; max-width: 600px; color: rgba(245, 246, 248, 0.7); }
+
+    .showcase-sentence {
+      margin-bottom: 2rem;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <h1>TYPOGRAPHY COMPARISON</h1>
+
+    <!-- Option 1 -->
+    <div class="font-option">
+      <div class="option-label">Option 1: The Architectural Avant-Garde (Syne + Instrument Serif + Manrope)</div>
+      <div class="showcase-sentence opt1-display">
+        How we scope <span class="opt1-accent">a project.</span>
+      </div>
+      <div class="opt1-body">
+        Three shapes of engagement, all custom-coded and motion-led. Pricing comes up in the first call so we can match it to what you're actually building.
+      </div>
+    </div>
+
+    <!-- Option 2 -->
+    <div class="font-option">
+      <div class="option-label">Option 2: The Editorial Gallery (Bodoni Moda + Jost)</div>
+      <div class="showcase-sentence opt2-display">
+        How we scope <span class="opt2-accent">a project.</span>
+      </div>
+      <div class="opt2-body">
+        Three shapes of engagement, all custom-coded and motion-led. Pricing comes up in the first call so we can match it to what you're actually building.
+      </div>
+    </div>
+
+    <!-- Option 3 -->
+    <div class="font-option">
+      <div class="option-label">Option 3: The Quiet Minimalist (Outfit + Cormorant Upright)</div>
+      <span class="opt3-accent">Digital Showroom</span>
+      <div class="showcase-sentence opt3-display">
+        How we scope a project.
+      </div>
+      <div class="opt3-body">
+        Three shapes of engagement, all custom-coded and motion-led. Pricing comes up in the first call so we can match it to what you're actually building.
+      </div>
+    </div>
+
+    <!-- The Original -->
+    <div class="font-option" style="border-bottom: none;">
+      <div class="option-label">The Original (Montserrat + Cormorant Garamond + Inter)</div>
+      <div class="showcase-sentence orig-display">
+        How we scope <span class="orig-accent">a project.</span>
+      </div>
+      <div class="orig-body">
+        Three shapes of engagement, all custom-coded and motion-led. Pricing comes up in the first call so we can match it to what you're actually building.
+      </div>
+    </div>
+
+  </div>
+
+</body>
+</html>
