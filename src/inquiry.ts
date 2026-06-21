@@ -722,6 +722,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initFocalPlane();
   initMenuOverlay();
   initQualificationModal();
+  initLegalModals();
   
   // Event listener for loader completion
   document.addEventListener('loaderComplete', () => {
@@ -875,4 +876,53 @@ function initQualificationModal() {
     }, 100);
   };
 }
+
+// 14. Legal Modals Logic (Privacy Policy & Legal Notice)
+function initLegalModals() {
+  const privacyModal = document.getElementById('privacy-modal');
+  const legalModal = document.getElementById('legal-modal');
+  
+  const triggerPrivacy = document.getElementById('trigger-privacy');
+  const triggerLegal = document.getElementById('trigger-legal');
+  
+  const closePrivacy = document.getElementById('close-privacy');
+  const closeLegal = document.getElementById('close-legal');
+  
+  if (!privacyModal || !legalModal || !triggerPrivacy || !triggerLegal || !closePrivacy || !closeLegal) return;
+  
+  const openModal = (modal: HTMLElement) => {
+    modal.classList.add('is-active');
+    document.body.style.overflow = 'hidden'; // Prevent background scrolling
+    modal.setAttribute('aria-hidden', 'false');
+  };
+  
+  const closeModal = (modal: HTMLElement) => {
+    modal.classList.remove('is-active');
+    document.body.style.overflow = ''; // Restore background scrolling
+    modal.setAttribute('aria-hidden', 'true');
+  };
+  
+  triggerPrivacy.addEventListener('click', (e) => {
+    e.preventDefault();
+    openModal(privacyModal);
+  });
+  
+  triggerLegal.addEventListener('click', (e) => {
+    e.preventDefault();
+    openModal(legalModal);
+  });
+  
+  closePrivacy.addEventListener('click', () => closeModal(privacyModal));
+  closeLegal.addEventListener('click', () => closeModal(legalModal));
+  
+  // Close on overlay click
+  privacyModal.addEventListener('click', (e) => {
+    if (e.target === privacyModal) closeModal(privacyModal);
+  });
+  
+  legalModal.addEventListener('click', (e) => {
+    if (e.target === legalModal) closeModal(legalModal);
+  });
+}
+
 
