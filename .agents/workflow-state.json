@@ -1,8 +1,8 @@
 {
-  "workflow": "workflow-context-hygiene",
-  "current_phase": "Desktop Finalization & Mobile Optimization Prep",
+  "workflow": "workflow-verify-project",
+  "current_phase": "Verification, Self-Audit, and Production Release",
   "completion_pct": 100,
-  "notes": "Session finished. The entire desktop inquiry page structure has been built, styled, and animated. We perfected the Goodfella-style logo flip, timeline spacing, and typography scale to feel premium. Next session MUST focus entirely on: 1) Mobile responsive optimization (stacking, font scaling, touch interactions). 2) Building the CTA booking experience (integrating Cal.com via dark-mode modal for a seamless, premium close).",
+  "notes": "Custom domain configured, catch-all professional email hello@bevamped.studio integrated, standalone compliance pages (privacy, legal) deployed with vertical shutter GSAP transitions, iOS Safari touch target bugs resolved, and noscript accessibility/SEO fallback implemented. All tests and production builds compile successfully.",
   "key_decisions": [
     "Rejected direct copying of animations. Documented the 'Scroll-Scrubbed Bending Wave' pattern into the Motion Design Research Library, but replaced it in production with an Awwwards-style Hover Blur + Highlight Focus interaction for a more original premium feel.",
     "Swapped the structural order of the page: Engagements (Pricing) now comes FIRST immediately after the Hero, followed by 'What's in a build'.",
@@ -11,7 +11,12 @@
     "Established a definitive, untouchable typography stack (Jost + Cormorant Garamond Italics + Manrope) that balances structural architecture with high-fashion editorial.",
     "Shifted hover-based interactions to click-based interactions (e.g., FAQ text scramble) to enforce intentionality ('decoding') over chaotic reactive states.",
     "Avoided native HTML <details> constraints by building a custom accordion using display: grid with 0fr to 1fr transitions for buttery smooth height expansion without JavaScript calculation.",
-    "Standardized text reveal animations using a kinetic GSAP split-text approach to ensure smooth, synchronized typography entrances across all major sections."
+    "Standardized text reveal animations using a kinetic GSAP split-text approach to ensure smooth, synchronized typography entrances across all major sections.",
+    "Root URL Resolution & Custom Domain: Renamed inquiry.html to index.html to allow clean root path rendering on bevamped.studio.",
+    "Separate Standalone Legal Pages: Deployed standalone compliance pages with spacious editorial grid layouts instead of standard inline modals.",
+    "Vertical Shutter Transitions: Built custom GSAP vertical shutter-wipe doors to provide premium motion continuity when navigating.",
+    "iOS Safari Touch Target Fix: Applied invisible background color and forced width rules to overcome mobile flexbox gap tap drop bugs.",
+    "No-JS Fallback: Added noscript CSS overrides to prevent the loader screen from locking user interaction if JavaScript fails to load."
   ],
   "blockers": []
 }
