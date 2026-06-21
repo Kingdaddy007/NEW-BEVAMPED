@@ -1003,9 +1003,10 @@ body.inquiry-page {
 }
 
 .menu-link {
-  background: none;
+  background-color: rgba(255, 255, 255, 0.001); /* Invisible solid background for iOS hit testing */
   border: none;
   text-align: left;
+  width: 100%; /* Force full width so the whole row is clickable */
   font-family: var(--vamped-display);
   font-size: clamp(3rem, 7vw, 7rem); /* Massive typography like Goodfellas */
   line-height: 1;
@@ -1165,6 +1166,7 @@ body.inquiry-page {
 }
 
 .faq-question {
+  background-color: rgba(255, 255, 255, 0.001); /* Invisible solid background for iOS flex gap hit testing */
   font-family: var(--vamped-mono);
   font-size: clamp(0.9rem, 1.2vw, 1.1rem);
   text-transform: uppercase;
