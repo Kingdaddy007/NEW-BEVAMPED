@@ -1863,6 +1863,135 @@ body.inquiry-page {
   margin-bottom: 1rem;
 }
 
+
+/* Standalone Legal Page Layout */
+.legal-main {
+  min-height: 100vh;
+  padding: 180px 5vw 100px;
+  background-color: var(--vamped-bg);
+  color: var(--vamped-ivory);
+}
+
+.legal-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 4rem;
+}
+
+@media (min-width: 1024px) {
+  .legal-grid {
+    grid-template-columns: 1fr 2fr;
+    gap: 8rem;
+  }
+}
+
+.legal-title-col {
+  position: relative;
+}
+
+@media (min-width: 1024px) {
+  .legal-title-col {
+    position: sticky;
+    top: 180px;
+    align-self: start;
+  }
+}
+
+.legal-page-title {
+  font-family: var(--vamped-display);
+  font-size: clamp(3rem, 6vw, 5.5rem);
+  font-weight: 300;
+  line-height: 1;
+  letter-spacing: -0.03em;
+  color: var(--vamped-ivory);
+  margin-bottom: 2rem;
+}
+
+.btn-back-home {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: var(--vamped-mono);
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  color: var(--vamped-gold);
+  text-decoration: none;
+  transition: opacity 0.3s;
+}
+
+.btn-back-home:hover {
+  opacity: 0.8;
+}
+
+.legal-text-col {
+  max-width: 720px;
+}
+
+.legal-intro {
+  font-family: var(--vamped-sans);
+  font-size: clamp(1.1rem, 1.5vw, 1.4rem);
+  line-height: 1.5;
+  color: rgba(255, 255, 255, 0.85);
+  margin-bottom: 3rem;
+}
+
+.legal-section-block {
+  margin-bottom: 3.5rem;
+}
+
+.legal-section-num {
+  font-family: var(--vamped-mono);
+  font-size: 0.85rem;
+  color: var(--vamped-gold);
+  display: block;
+  margin-bottom: 0.5rem;
+}
+
+.legal-section-heading {
+  font-family: var(--vamped-display);
+  font-size: clamp(1.5rem, 2.5vw, 2.2rem);
+  font-weight: 400;
+  line-height: 1.2;
+  color: var(--vamped-ivory);
+  margin-bottom: 1.25rem;
+}
+
+.legal-section-body {
+  font-family: var(--vamped-sans);
+  font-size: 1rem;
+  line-height: 1.6;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.legal-section-body p {
+  margin-bottom: 1.25rem;
+}
+
+.legal-section-body ul {
+  list-style: none;
+  padding: 0;
+  margin: 1.5rem 0;
+}
+
+.legal-section-body li {
+  position: relative;
+  padding-left: 1.5rem;
+  margin-bottom: 0.75rem;
+  font-family: var(--vamped-sans);
+  font-size: 1rem;
+  line-height: 1.5;
+  color: rgba(255, 255, 255, 0.75);
+}
+
+.legal-section-body li::before {
+  content: "■";
+  color: var(--vamped-gold);
+  font-size: 0.5rem;
+  position: absolute;
+  left: 0;
+  top: 0.5rem;
+}
+
 /* BUG FIXES: Prevent overlapping invisible boxes from stealing hover */
 
 .inquiry-hero, .hero-capabilities, .faq-pitch, .faq-pitch-content { pointer-events: none; }

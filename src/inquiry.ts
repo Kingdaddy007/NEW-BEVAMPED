@@ -722,7 +722,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initFocalPlane();
   initMenuOverlay();
   initQualificationModal();
-  initLegalModals();
+  initPageTransitions();
   
   // Event listener for loader completion
   document.addEventListener('loaderComplete', () => {
@@ -877,51 +877,46 @@ function initQualificationModal() {
   };
 }
 
-// 14. Legal Modals Logic (Privacy Policy & Legal Notice)
-function initLegalModals() {
-  const privacyModal = document.getElementById('privacy-modal');
-  const legalModal = document.getElementById('legal-modal');
-  
-  const triggerPrivacy = document.getElementById('trigger-privacy');
-  const triggerLegal = document.getElementById('trigger-legal');
-  
-  const closePrivacy = document.getElementById('close-privacy');
-  const closeLegal = document.getElementById('close-legal');
-  
-  if (!privacyModal || !legalModal || !triggerPrivacy || !triggerLegal || !closePrivacy || !closeLegal) return;
-  
-  const openModal = (modal: HTMLElement) => {
-    modal.classList.add('is-active');
-    document.body.style.overflow = 'hidden'; // Prevent background scrolling
-    modal.setAttribute('aria-hidden', 'false');
-  };
-  
-  const closeModal = (modal: HTMLElement) => {
-    modal.classList.remove('is-active');
-    document.body.style.overflow = ''; // Restore background scrolling
-    modal.setAttribute('aria-hidden', 'true');
-  };
-  
-  triggerPrivacy.addEventListener('click', (e) => {
-    e.preventDefault();
-    openModal(privacyModal);
-  });
-  
-  triggerLegal.addEventListener('click', (e) => {
-    e.preventDefault();
-    openModal(legalModal);
-  });
-  
-  closePrivacy.addEventListener('click', () => closeModal(privacyModal));
-  closeLegal.addEventListener('click', () => closeModal(legalModal));
-  
-  // Close on overlay click
-  privacyModal.addEventListener('click', (e) => {
-    if (e.target === privacyModal) closeModal(privacyModal);
-  });
-  
-  legalModal.addEventListener('click', (e) => {
-    if (e.target === legalModal) closeModal(legalModal);
+// 14. Page Exit Shutter Transition
+function initPageTransitions() {
+  const transitionLinks = document.querySelectorAll('.transition-link');
+  const loaderScreen = document.getElementById('loader-screen');
+
+  transitionLinks.forEach(link => {
+    link.addEventListener('click', (e) => {
+      e.preventDefault();
+      const target = e.currentTarget as HTMLAnchorElement;
+      const targetUrl = target.getAttribute('href');
+
+      if (!targetUrl) return;
+
+      // Close menu if open
+      const menuBtn = document.querySelector('.btn-menu');
+      if (menuBtn && menuBtn.innerHTML.includes('CLOSE')) {
+        menuBtn.dispatchEvent(new Event('click'));
+      }
+
+      // Show loader screen
+      if (loaderScreen) {
+        loaderScreen.style.display = 'flex';
+      }
+
+      // Set doors initial state for closing animation
+      gsap.set('.loader-door.top', { yPercent: -100 });
+      gsap.set('.loader-door.bottom', { yPercent: 100 });
+      gsap.set('.loader-logo-split', { opacity: 0 });
+
+      // Exit timeline
+      const exitTl = gsap.timeline({
+        onComplete: () => {
+          window.location.href = targetUrl;
+        }
+      });
+
+      exitTl.to('.loader-door.top', { yPercent: 0, duration: 1.0, ease: "power3.inOut" })
+        .to('.loader-door.bottom', { yPercent: 0, duration: 1.0, ease: "power3.inOut" }, "<")
+        .to('.loader-logo-split', { opacity: 1, duration: 0.4 }, "-=0.3");
+    });
   });
 }
 
