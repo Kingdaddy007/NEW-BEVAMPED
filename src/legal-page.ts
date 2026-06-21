@@ -148,9 +148,27 @@ function initMenuOverlay() {
   }
 }
 
+// 4. Lightweight Scroll Effect for Dark Navbar
+function initNavScroll() {
+  const nav = document.querySelector('.inquiry-nav');
+  if (!nav) return;
+
+  const handleScroll = () => {
+    if (window.scrollY > 50) {
+      nav.classList.add('scrolled');
+    } else {
+      nav.classList.remove('scrolled');
+    }
+  };
+
+  window.addEventListener('scroll', handleScroll, { passive: true });
+  handleScroll(); // Initial check
+}
+
 // Initialize Page Features
 document.addEventListener('DOMContentLoaded', () => {
   initShutterEntrance();
   initPageTransitions();
   initMenuOverlay();
+  initNavScroll();
 });

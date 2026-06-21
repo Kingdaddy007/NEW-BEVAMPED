@@ -1910,17 +1910,34 @@ body.inquiry-page {
 .btn-back-home {
   display: inline-flex;
   align-items: center;
-  gap: 0.5rem;
-  font-family: var(--vamped-mono);
-  font-size: 0.85rem;
+  gap: 0.75rem;
+  font-family: var(--vamped-sans);
+  font-size: 0.75rem;
+  font-weight: 500;
   text-transform: uppercase;
-  color: var(--vamped-gold);
+  letter-spacing: 0.15em;
+  color: var(--vamped-ivory);
   text-decoration: none;
-  transition: opacity 0.3s;
+  padding: 0.6rem 1.5rem;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 100px;
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  margin-top: 1.5rem;
 }
 
 .btn-back-home:hover {
-  opacity: 0.8;
+  border-color: var(--vamped-gold);
+  color: var(--vamped-gold);
+  background-color: rgba(212, 175, 55, 0.05);
+}
+
+.btn-back-home svg {
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  stroke: currentColor;
+}
+
+.btn-back-home:hover svg {
+  transform: translateX(-4px);
 }
 
 .legal-text-col {
@@ -1939,21 +1956,52 @@ body.inquiry-page {
   margin-bottom: 3.5rem;
 }
 
+.legal-section-header {
+  display: flex;
+  align-items: baseline;
+  gap: 1.25rem;
+  margin-bottom: 1.25rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  padding-bottom: 0.75rem;
+}
+
 .legal-section-num {
-  font-family: var(--vamped-mono);
-  font-size: 0.85rem;
+  font-family: var(--vamped-serif);
+  font-size: clamp(1.8rem, 2.5vw, 2.4rem);
+  font-style: italic;
+  font-weight: 300;
   color: var(--vamped-gold);
-  display: block;
-  margin-bottom: 0.5rem;
+  line-height: 1;
 }
 
 .legal-section-heading {
   font-family: var(--vamped-display);
-  font-size: clamp(1.5rem, 2.5vw, 2.2rem);
+  font-size: clamp(1.4rem, 2.2vw, 1.8rem);
   font-weight: 400;
-  line-height: 1.2;
+  line-height: 1.1;
   color: var(--vamped-ivory);
-  margin-bottom: 1.25rem;
+  margin: 0;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+}
+
+/* Dark Navbar for Legal/Dark Pages */
+.inquiry-nav.dark-nav {
+  color: var(--vamped-ivory); /* Light text/elements */
+}
+
+.inquiry-nav.dark-nav .brand-vamped {
+  color: var(--vamped-ivory) !important;
+}
+
+.inquiry-nav.dark-nav .btn-menu {
+  color: var(--vamped-ivory) !important;
+}
+
+.inquiry-nav.dark-nav.scrolled {
+  background-color: rgba(10, 10, 11, 0.85) !important; /* Gallery Obsidian background */
+  border: 1px solid rgba(255, 255, 255, 0.08) !important;
+  color: var(--vamped-ivory) !important;
 }
 
 .legal-section-body {
