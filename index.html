@@ -1,9 +1,618 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
   <head>
-    <meta http-equiv="refresh" content="0; url=/inquiry.html" />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>BE VAMPED | Digital Showroom</title>
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Jost:wght@300;400;500;600;700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,400;1,600&family=Manrope:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Styles -->
+    <link rel="stylesheet" href="/src/style.css" />
+    <link rel="stylesheet" href="/src/inquiry.css" />
   </head>
-  <body>
-    <p>Redirecting to <a href="/inquiry.html">Inquiry Page</a>...</p>
+  <body class="inquiry-page">
+    
+    <!-- Full Screen Loader -->
+    <div id="loader-screen">
+      <div class="loader-door top"></div>
+      <div class="loader-door bottom"></div>
+      <div class="loader-content">
+        <div class="loader-logo-split">
+          <span class="loader-be">BE</span>
+          <span class="loader-vamped">VAMPED</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Menu Overlay -->
+    <div class="menu-overlay">
+      <div class="menu-grid">
+        <!-- Column 1: Links -->
+        <div class="menu-col-links">
+          <div class="hover-indicator"></div>
+          <button class="menu-link" data-scroll-to="#section-scope">
+            Scope
+          </button>
+          <button class="menu-link" data-scroll-to="#section-cycle">
+            Timelines
+          </button>
+          <button class="menu-link" data-scroll-to="#section-foundation">
+            Foundation
+          </button>
+          <button class="menu-link" data-scroll-to="#section-process">
+            Cycle
+          </button>
+          <button class="menu-link" data-scroll-to="#section-faq">
+            FAQ
+          </button>
+          <button class="menu-link btn-inquire-menu" style="color: var(--vamped-gold); margin-top: 2rem;">
+            Start a Project
+          </button>
+        </div>
+
+        <!-- Column 2: Contact -->
+        <div class="menu-col-contact">
+          <div class="menu-contact-group">
+            <div class="menu-contact-label">CONTACT</div>
+            <a href="mailto:hello@bevamped.studio" class="menu-contact-link">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="vertical-align: middle; margin-right: 8px; display: inline-block;"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+              hello@bevamped.studio
+            </a>
+            <br>
+            <a href="https://wa.me/2347038243754" target="_blank" class="menu-contact-link">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="vertical-align: middle; margin-right: 8px; display: inline-block;"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+              WhatsApp
+            </a>
+            <br>
+            <a href="https://instagram.com/bevampedstudio" target="_blank" class="menu-contact-link">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="vertical-align: middle; margin-right: 8px; display: inline-block;"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
+              @bevampedstudio
+            </a>
+          </div>
+
+          <div class="menu-status-group">
+            <div class="menu-status-label">WORKING GLOBALLY</div>
+            <ul class="status-list">
+              <li><span class="status-indicator"></span>ACCEPTING PROJECTS.<br>JOIN THE WAITLIST.</li>
+              <li><span class="status-indicator"></span>ONLY 3 SPOTS LEFT</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Column 3: Images -->
+        <div class="menu-col-images">
+          <div class="menu-img-wrapper">
+            <img src="/public/Smoke_drifting_through_void.mp4" alt="Atmosphere" onerror="this.style.display='none'" />
+            <video src="/public/Smoke_drifting_through_void.mp4" autoplay loop muted playsinline class="menu-video"></video>
+            <div class="menu-img-caption">ABOUT THE STUDIO</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Qualification Modal -->
+    <div id="qual-modal-overlay" class="qual-modal-overlay" aria-hidden="true">
+      <div class="qual-modal-container">
+        <!-- Modal Header -->
+        <div class="qual-modal-header">
+          <h3 class="qual-modal-title">Diagnostic Session</h3>
+          <button class="btn-qual-close" id="btn-qual-close" aria-label="Close">
+            <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M1 1L13 13M1 13L13 1" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </button>
+        </div>
+        
+        <div class="qual-step-container">
+          <!-- Step 1: Scope -->
+          <div class="qual-step active" id="qual-step-1">
+            <h2 class="qual-title">What is the primary scope?</h2>
+            <div class="qual-options">
+              <button class="btn-qual-option" data-value="The Portfolio">The Portfolio</button>
+              <button class="btn-qual-option" data-value="The Showroom">The Showroom</button>
+              <button class="btn-qual-option" data-value="The Retainer">The Retainer</button>
+            </div>
+          </div>
+          
+          <!-- Step 2: Timeline -->
+          <div class="qual-step" id="qual-step-2">
+            <h2 class="qual-title">What is your ideal timeline?</h2>
+            <div class="qual-options">
+              <button class="btn-qual-option" data-value="Immediate (Next 2 Weeks)">Immediate (Next 2 Weeks)</button>
+              <button class="btn-qual-option" data-value="Next Quarter">Next Quarter</button>
+              <button class="btn-qual-option" data-value="Planning Phase">Planning Phase</button>
+            </div>
+          </div>
+          
+          <!-- Step 3: Challenge -->
+          <div class="qual-step" id="qual-step-3">
+            <h2 class="qual-title">What is the primary challenge right now?</h2>
+            <div class="qual-options">
+              <button class="btn-qual-option" data-value="Presence looks generic">Our digital presence looks generic or outdated.</button>
+              <button class="btn-qual-option" data-value="Attracting wrong clients">We are attracting the wrong type of clients.</button>
+              <button class="btn-qual-option" data-value="Doesn't reflect quality">Our brand doesn't reflect the quality of our work.</button>
+            </div>
+          </div>
+
+          <!-- Step 4: Cal.com Embed -->
+          <div class="qual-step" id="qual-step-4">
+            <h2 class="qual-title" id="cal-loading-text" style="text-align: center;">Loading Calendar...</h2>
+            <div style="width:100%;height:100%;overflow:scroll" id="my-cal-inline"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Privacy Policy Modal -->
+    <div id="privacy-modal" class="legal-modal-overlay" aria-hidden="true">
+      <div class="legal-modal-container">
+        <div class="legal-modal-header">
+          <h2 class="legal-modal-title">Privacy Policy</h2>
+          <button class="btn-legal-close" id="close-privacy" aria-label="Close">
+            <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M1 1L13 13M1 13L13 1" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </button>
+        </div>
+        <div class="legal-modal-body">
+          <p>Last updated: June 2026</p>
+          <h3>1. Information We Collect</h3>
+          <p>We only collect information that you voluntarily provide to us when you initiate a project brief or request a strategy call. This includes your name, email address, project requirements, and communication details via WhatsApp, Instagram, or email.</p>
+          <h3>2. How We Use Your Information</h3>
+          <p>We use your information strictly to review your project scope, contact you regarding waitlist spots, schedule diagnostic sessions, and coordinate project details. We do not sell, distribute, or share your personal data with third-party marketers or external services.</p>
+          <h3>3. Data Security & Storage</h3>
+          <p>We implement industry-standard administrative and technical security measures to protect your personal information from unauthorized access, loss, or alteration. All booking and calendar integration details are processed securely via encrypted third-party services (Cal.com).</p>
+          <h3>4. Your Rights</h3>
+          <p>You can request to review, modify, or permanently delete any personal data we hold about you at any time. To make a request, simply email us at <a href="mailto:hello@bevamped.studio" style="color: var(--vamped-gold);">hello@bevamped.studio</a>.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Legal Notice Modal -->
+    <div id="legal-modal" class="legal-modal-overlay" aria-hidden="true">
+      <div class="legal-modal-container">
+        <div class="legal-modal-header">
+          <h2 class="legal-modal-title">Legal Notice</h2>
+          <button class="btn-legal-close" id="close-legal" aria-label="Close">
+            <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M1 1L13 13M1 13L13 1" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </button>
+        </div>
+        <div class="legal-modal-body">
+          <p>Last updated: June 2026</p>
+          <h3>1. Company Details</h3>
+          <p>This showcase is operated and managed by BEVAMPED. All licensing, operational inquires, and architectural requests must be directed to <a href="mailto:hello@bevamped.studio" style="color: var(--vamped-gold);">hello@bevamped.studio</a>.</p>
+          <h3>2. Intellectual Property Rights</h3>
+          <p>All materials on this website, including but not limited to text, images, custom layouts, motion choreography sequences, CSS styles, animations, graphics, code symbols, and video assets, are the intellectual property of BEVAMPED. Copying, replicating, redistributing, or adapting any component of this website without explicit written consent is strictly prohibited.</p>
+          <h3>3. Disclaimer & Limitation of Liability</h3>
+          <p>All information regarding development cycles, engagement packages, project slots, and capabilities is presented for marketing purposes. Spot availability and project commitments are only finalized upon a signed formal agreement. BEVAMPED is not liable for any indirect or consequential damages arising from the use of this website.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="inquiry-nav">
+      <div class="nav-left">
+        <a href="/" class="nav-logo flip-container">
+          <div class="flipper">
+            <div class="front">
+              <span class="brand-be" style="color: var(--vamped-gold);">BE</span><span class="brand-vamped">VAMPED</span>
+            </div>
+            <div class="back">
+              <span class="brand-be" style="color: var(--vamped-gold);">BE</span><span style="color: var(--vamped-ivory);">VAMPED</span>
+            </div>
+          </div>
+        </a>
+      </div>
+      <div class="nav-center">
+        <button class="btn-menu">MENU <span class="equals-sign">=</span></button>
+      </div>
+      <div class="nav-right">
+        <div class="cta-group cta-gold">
+          <button class="btn-cta-main">
+            <div class="cta-text-wrapper">
+              <span class="text-front">LET'S WORK TOGETHER</span>
+              <span class="text-back">LET'S WORK TOGETHER</span>
+            </div>
+          </button>
+          <button class="btn-cta-icon">
+            <span class="icon-plus">+</span>
+          </button>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header id="section-scope" class="inquiry-hero">
+      <h1 class="hero-headline split-reveal-hero">How we scope a project.</h1>
+      <p class="hero-subtext">Three shapes of engagement, all custom-coded and motion-led. Pricing comes up in the first call so we can match it to what you're actually building.</p>
+      
+      <!-- Capabilities Portal Marquee -->
+      <div class="hero-capabilities">
+        <div class="marquee-track">
+          <div class="marquee-content">
+            <span>GSAP MOTION</span>
+            <span>CUSTOM WEBGL</span>
+            <span>FRAMER ARCHITECTURE</span>
+            <span>EXPERT POSITIONING</span>
+            <span>TECHNICAL SEO</span>
+            <span class="dim">+ HIGH-END CURATION</span>
+          </div>
+          <!-- Duplicated for seamless loop -->
+          <div class="marquee-content" aria-hidden="true">
+            <span>GSAP MOTION</span>
+            <span>CUSTOM WEBGL</span>
+            <span>FRAMER ARCHITECTURE</span>
+            <span>EXPERT POSITIONING</span>
+            <span>TECHNICAL SEO</span>
+            <span class="dim">+ HIGH-END CURATION</span>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- Engagements Section: 3-Column with Gaps -->
+    <section class="engagements-section">
+      <div class="engagements-grid">
+        
+        <!-- Column 1 -->
+        <div class="engage-card light-col">
+          <div class="engage-content">
+            <div class="tier-label"><span class="tier-dot">■</span> THE PORTFOLIO</div>
+            <h3 class="engage-title">By project</h3>
+            <ul class="engage-features">
+              <li>Single, immersive scroll narrative</li>
+              <li>Up to 6 curated flagship projects</li>
+              <li>Cinematic GSAP motion choreography</li>
+              <li>High-fidelity asset optimization</li>
+            </ul>
+          </div>
+          <div class="engage-footer">
+            <div class="footer-desc">FOR STUDIOS READY FOR A DEFINITIVE ONLINE PRESENCE</div>
+            <div class="spots-left"><span class="tier-dot">■</span> ONLY 3 SPOTS LEFT</div>
+            <div class="cta-group cta-dark">
+              <button class="btn-cta-main">
+                <div class="cta-text-wrapper">
+                  <span class="text-front">START A PROJECT</span>
+                  <span class="text-back">START A PROJECT</span>
+                </div>
+              </button>
+              <button class="btn-cta-icon">
+                <span class="icon-plus">+</span>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Column 2 (Dark) -->
+        <div class="engage-card dark-col">
+          <div class="engage-content">
+            <div class="tier-label"><span class="tier-dot">■</span> THE SHOWROOM</div>
+            <h3 class="engage-title">By brand</h3>
+            <ul class="engage-features">
+              <li>Everything in The Portfolio</li>
+              <li>Multi-page digital architecture</li>
+              <li>Complete visual identity translation</li>
+              <li>Client inquiry & qualification funnels</li>
+            </ul>
+          </div>
+          <div class="engage-footer">
+            <div class="footer-desc">FOR STUDIOS REDEFINING THEIR ENTIRE MARKET POSITION</div>
+            <div class="spots-left"><span class="tier-dot">■</span> ONLY 1 SPOT LEFT</div>
+            <div class="cta-group cta-light">
+              <button class="btn-cta-main">
+                <div class="cta-text-wrapper">
+                  <span class="text-front">START A PROJECT</span>
+                  <span class="text-back">START A PROJECT</span>
+                </div>
+              </button>
+              <button class="btn-cta-icon">
+                <span class="icon-plus">+</span>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Column 3 -->
+        <div class="engage-card light-col">
+          <div class="engage-content">
+            <div class="tier-label"><span class="tier-dot">■</span> THE RETAINER</div>
+            <h3 class="engage-title">By partnership</h3>
+            <ul class="engage-features">
+              <li>White-glove portfolio updates</li>
+              <li>Technical SEO for high-net-worth keywords</li>
+              <li>Continuous A/B testing of inquiry flows</li>
+              <li>Dedicated engineering & motion support</li>
+            </ul>
+          </div>
+          <div class="engage-footer">
+            <div class="footer-desc">FOR TOP-TIER FIRMS NEEDING AN ONGOING DIGITAL ARM</div>
+            <div class="spots-left"><span class="tier-dot">■</span> ONLY 3 SPOTS LEFT</div>
+            <div class="cta-group cta-dark">
+              <button class="btn-cta-main">
+                <div class="cta-text-wrapper">
+                  <span class="text-front">START A PROJECT</span>
+                  <span class="text-back">START A PROJECT</span>
+                </div>
+              </button>
+              <button class="btn-cta-icon">
+                <span class="icon-plus">+</span>
+              </button>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Focal Planes (Spatial Intelligence) -->
+      <section id="section-cycle" class="timeline-section">
+        <div class="timeline-container">
+          <div class="timeline-header-area">
+            <h2 class="timeline-title split-reveal-timeline" style="font-size: clamp(2rem, 3.5vw, 3rem);">How long an <br> engagement takes.</h2>
+            <p class="timeline-subtitle">Timelines vary with scope. We do not rush architecture, ensuring absolute technical and visual precision. We confirm all availability prior to kickoff.</p>
+          </div>
+          
+          <div class="timeline-table-area">
+            <div class="timeline-row timeline-header-row">
+              <div class="timeline-col">ENGAGEMENT</div>
+              <div class="timeline-col">LENGTH</div>
+            </div>
+          <div class="timeline-row">
+            <div class="timeline-col">THE PORTFOLIO</div>
+            <div class="timeline-col">Two to Three Weeks</div>
+          </div>
+          <div class="timeline-row">
+            <div class="timeline-col">THE SHOWROOM</div>
+            <div class="timeline-col">Four to Six Weeks</div>
+          </div>
+          <div class="timeline-row">
+            <div class="timeline-col">THE RETAINER</div>
+            <div class="timeline-col">Ongoing Partnership</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Build Section: What's in a build -->
+      <section id="section-foundation" class="build-section">
+        <div class="build-container focal-container">
+          <div class="build-header focal-header" style="margin-bottom: 4vh;">
+            <h2 class="build-title focal-title split-reveal-foundation" style="font-size: clamp(2.5rem, 4vw, 3.5rem); font-family: var(--vamped-display); letter-spacing: -0.02em; font-weight: 400; margin-bottom: 1rem;">What's in a build.</h2>
+            <div class="build-meta focal-meta" style="font-size: 0.85rem; letter-spacing: 0.1em; color: var(--vamped-gold);">// SERVICES</div>
+          </div>
+        <div class="build-list-wrapper focal-list-wrapper">
+          <ul class="build-list focal-list" id="build-services-list">
+            <li class="focal-item">Custom frontend build, end-to-end</li>
+            <li class="focal-item">Motion design and animation systems</li>
+            <li class="focal-item">Digital brand identity translation</li>
+            <li class="focal-item">Interactive spatial experiences</li>
+            <li class="focal-item">Editorial typography &amp; grid systems</li>
+            <li class="focal-item">White-glove maintenance retainer</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================
+         THE BRUTALIST VELOCITY PROCESS
+         ========================================== -->
+      <section id="section-process" class="brutal-process-section">
+        <div class="brutal-container">
+          
+          <div class="process-header" style="padding-top: 10vh; padding-left: 5vw; margin-bottom: 6vh;">
+            <h2 class="brutal-section-title split-reveal-process" style="font-family: var(--vamped-display); font-size: clamp(2rem, 3.5vw, 3rem); line-height: 1.1; letter-spacing: -0.02em; color: var(--vamped-ivory);">The Development Cycle.</h2>
+          </div>
+
+          <div class="brutal-row" style="z-index: 21;">
+          <div class="brutal-row-border"><div class="brutal-row-glow"></div></div>
+          <div class="brutal-meta">[ PHASE 01 ]</div>
+          <h3 class="brutal-heading">DIAGNOSE <br>THE BRAND</h3>
+          <p class="brutal-desc">We start with a guided, collaborative extraction. While we lead the diagnostic process, we work intimately with you to uncover the raw truth of your brand. Together, we analyze your ideal client profile, uncover your pricing power, and identify the gaps in your current digital perception.</p>
+        </div>
+
+        <div class="brutal-row" style="z-index: 22;">
+          <div class="brutal-row-border"><div class="brutal-row-glow" style="animation-delay: 1.5s;"></div></div>
+          <div class="brutal-meta">[ PHASE 02 ]</div>
+          <h3 class="brutal-heading">STORYBOARD <br>THE SPACE</h3>
+          <p class="brutal-desc">We translate your brand into a physical architecture. We define the entry room, the threshold event, and the signature materials. We map the exact emotional journey your high-net-worth buyer must experience.</p>
+        </div>
+
+        <div class="brutal-row" style="z-index: 23;">
+          <div class="brutal-row-border"><div class="brutal-row-glow" style="animation-delay: 0.5s;"></div></div>
+          <div class="brutal-meta">[ PHASE 03 ]</div>
+          <h3 class="brutal-heading">CURATE <br>THE ASSETS</h3>
+          <p class="brutal-desc">Luxury is defined by what you choose not to show. We ruthlessly edit your existing portfolio. Where gaps exist, we art-direct and construct hyper-realistic, supplemental architectural visual assets.</p>
+        </div>
+
+        <div class="brutal-row" style="z-index: 24;">
+          <div class="brutal-row-border"><div class="brutal-row-glow" style="animation-delay: 2.5s;"></div></div>
+          <div class="brutal-meta">[ PHASE 04 ]</div>
+          <h3 class="brutal-heading">CHOREOGRAPH <br>THE MOTION</h3>
+          <p class="brutal-desc">This is where the architecture breathes. We hand-write custom GSAP logic to control how light, typography, and imagery enter the screen. We engineer the scroll physics to replicate a physical gallery.</p>
+        </div>
+
+        <div class="brutal-row" style="z-index: 25;">
+          <div class="brutal-row-border"><div class="brutal-row-glow" style="animation-delay: 1.2s;"></div></div>
+          <div class="brutal-meta">[ PHASE 05 ]</div>
+          <h3 class="brutal-heading">ENGINEER <br>THE SYSTEM</h3>
+          <p class="brutal-desc">We establish the material script. We define how light, texture, and physical elements, like polished marble or fluted glass, interact with typography to construct a tactile, dimensional environment.</p>
+        </div>
+
+        <div class="brutal-row" style="z-index: 26;">
+          <div class="brutal-row-border"><div class="brutal-row-glow" style="animation-delay: 3.1s;"></div></div>
+          <div class="brutal-meta">[ PHASE 06 ]</div>
+          <h3 class="brutal-heading">DEPLOY <br>THE SHOWROOM</h3>
+          <p class="brutal-desc">We deploy the final architecture, run intensive performance profiling, and integrate a diagnostic inquiry flow, ensuring your new showroom filters out commodity buyers and delivers pre-qualified leads.</p>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section id="section-faq" class="faq-section">
+      <div class="faq-container">
+        <div class="faq-header">
+          <h2 class="faq-title split-reveal-faq">Common Questions.</h2>
+        </div>
+        <div class="faq-list">
+          <div class="faq-item">
+            <div class="faq-question">Why no prices on the page?</div>
+            <div class="faq-answer-wrapper">
+              <div class="faq-answer-inner">
+                <p class="faq-answer">Numbers depend on what you are building. We map out the exact scope in our first session so the pricing reflects the actual architecture required, not a generic category.</p>
+              </div>
+            </div>
+          </div>
+          <div class="faq-item">
+            <div class="faq-question">How are the tiers different?</div>
+            <div class="faq-answer-wrapper">
+              <div class="faq-answer-inner">
+                <p class="faq-answer">The Portfolio is a hyper-focused digital presence designed for rapid deployment. The Showroom is a fully immersive, multi-page spatial experience engineered with cinematic scroll physics to replicate a physical gallery.</p>
+              </div>
+            </div>
+          </div>
+          <div class="faq-item">
+            <div class="faq-question">What is included at each tier?</div>
+            <div class="faq-answer-wrapper">
+              <div class="faq-answer-inner">
+                <p class="faq-answer">A custom front-end architecture, immersive motion design, and brand identity carried flawlessly through every device breakpoint. The Showroom tier expands this baseline into a multi-page spatial experience, while Retainer engagements are scoped continuously to fit your needs.</p>
+              </div>
+            </div>
+          </div>
+          <div class="faq-item">
+            <div class="faq-question">Who do I work with on the project?</div>
+            <div class="faq-answer-wrapper">
+              <div class="faq-answer-inner">
+                <p class="faq-answer">You work directly with the lead architect. No project managers, no junior developers. The person you speak with on the strategy call is the person directing the code.</p>
+              </div>
+            </div>
+          </div>
+          <div class="faq-item">
+            <div class="faq-question">Most studios take 3 months. Why is your timeline only 4 to 6 weeks?</div>
+            <div class="faq-answer-wrapper">
+              <div class="faq-answer-inner">
+                <p class="faq-answer">We operate a proprietary, AI-accelerated engineering system. We do not write boilerplate code by hand; we direct an advanced OS to construct the foundation, allowing us to focus entirely on motion design and spatial narrative. You get a superior build in a fraction of the time.</p>
+              </div>
+            </div>
+          </div>
+          <div class="faq-item">
+            <div class="faq-question">What if my project requires more than what is listed?</div>
+            <div class="faq-answer-wrapper">
+              <div class="faq-answer-inner">
+                <p class="faq-answer">That is what the Retainer tier is for. Multi-site systems, custom interactive campaigns, and continuous design support are scoped on their own terms. Tell us what you need, and we will build the framework.</p>
+              </div>
+            </div>
+          </div>
+          <div class="faq-item">
+            <div class="faq-question">How do payments work?</div>
+            <div class="faq-answer-wrapper">
+              <div class="faq-answer-inner">
+                <p class="faq-answer">A 50% deposit secures your build slot in our calendar, with the remaining balance tied to launch milestones. We confirm the exact structure in the first call to align with your finance flow.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Pre-Footer Contact Section -->
+    <section id="section-build" class="pre-footer-contact">
+      <video autoplay loop muted playsinline class="contact-video-bg">
+        <source src="/public/Smoke_drifting_through_void.mp4" type="video/mp4">
+      </video>
+      <div class="contact-content-overlay">
+        <!-- Left Column -->
+        <div class="contact-left">
+          <h2 class="contact-title split-reveal">Initiate a Build.</h2>
+        </div>
+        
+        <!-- Right Column -->
+        <div class="contact-right">
+          <h3 class="contact-subtitle">Secure a position in our calendar. We review all architectural briefs within 24 hours.</h3>
+          
+          <div class="contact-info">
+            <a href="mailto:hello@bevamped.studio" class="contact-email">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="vertical-align: middle; margin-right: 8px; display: inline-block;"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+              hello@bevamped.studio
+            </a><br>
+            <a href="https://instagram.com/bevampedstudio" target="_blank" class="contact-email">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="vertical-align: middle; margin-right: 8px; display: inline-block;"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
+              @bevampedstudio
+            </a><br>
+            <a href="https://wa.me/2347038243754" target="_blank" class="contact-email">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="vertical-align: middle; margin-right: 8px; display: inline-block;"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+              WhatsApp
+            </a>
+            <p class="contact-global">Working with teams worldwide.</p>
+          </div>
+          
+          <div class="contact-cta-wrapper">
+            <div class="cta-label-wrapper">
+              <span class="cta-label">Get in touch</span>
+            </div>
+            <div class="cta-group">
+              <button class="btn-cta-main">
+                <div class="cta-text-wrapper">
+                  <span class="text-front">REQUEST A STRATEGY CALL</span>
+                  <span class="text-back">REQUEST A STRATEGY CALL</span>
+                </div>
+              </button>
+              <button class="btn-cta-icon">
+                <span class="icon-plus">+</span>
+              </button>
+            </div>
+          </div>
+          
+          <div class="contact-footer-note">
+            LEAD ARCHITECT DIRECTED. SYSTEMATICALLY ACCELERATED.
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="negative-footer">
+      <div class="footer-grid">
+        <div class="footer-social">
+          <ul class="footer-links">
+            <li><a href="mailto:hello@bevamped.studio">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="vertical-align: middle; margin-right: 4px; display: inline-block;"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+              Email
+            </a></li>
+            <li><a href="https://instagram.com/bevampedstudio" target="_blank">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="vertical-align: middle; margin-right: 4px; display: inline-block;"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
+              Instagram
+            </a></li>
+            <li><a href="https://wa.me/2347038243754" target="_blank">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="vertical-align: middle; margin-right: 4px; display: inline-block;"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+              WhatsApp
+            </a></li>
+          </ul>
+        </div>
+        <div class="footer-legal">
+          <ul class="footer-links">
+            <li><button class="footer-legal-link" id="trigger-privacy">Privacy Policy</button></li>
+            <li><button class="footer-legal-link" id="trigger-legal">Legal Notice</button></li>
+          </ul>
+        </div>
+      </div>
+      
+      <div class="footer-copyright">
+        © 2026 BEVAMPED. Lead Architect Directed.
+      </div>
+      
+      <div class="footer-watermark" aria-hidden="true">
+        BEVAMPED
+      </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script type="module" src="/src/inquiry.ts"></script>
   </body>
 </html>
