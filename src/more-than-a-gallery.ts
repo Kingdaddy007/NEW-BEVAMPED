@@ -301,7 +301,7 @@ function observePageChapters(): void {
   revealOnce(approachSection, 'is-threshold-visible', { threshold: 0.04 });
   revealOnce(attentionStatement, 'is-focused', { threshold: 0.42 });
   principleSections.forEach((section) => {
-    revealOnce(section, 'is-visible', { threshold: narrowViewportQuery.matches ? 0.16 : 0.28 });
+    revealOnce(section, 'is-visible', { threshold: narrowViewportQuery.matches ? 0.05 : 0.28 });
   });
   revealOnce(contactThreshold, 'is-visible', { threshold: 0.18 });
 }
