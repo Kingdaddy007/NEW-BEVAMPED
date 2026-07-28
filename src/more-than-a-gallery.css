@@ -1090,6 +1090,8 @@ a:focus-visible {
 }
 
 .contact-threshold__content {
+  position: relative;
+  z-index: 2;
   align-self: center;
   width: min(100%, 92rem);
   margin-inline: auto;
@@ -1237,6 +1239,7 @@ a:focus-visible {
   letter-spacing: -0.075em;
   line-height: 0.62;
   white-space: nowrap;
+  pointer-events: none;
 }
 
 .contact-threshold.is-visible .contact-threshold__wordmark {
