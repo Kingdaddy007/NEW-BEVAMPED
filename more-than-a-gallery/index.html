@@ -2,23 +2,42 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, viewport-fit=cover"
+    />
     <title>More Than a Gallery — A BEVAMPED Demonstration</title>
     <meta
       name="description"
-      content="A short demonstration of how sequencing, typography, and restrained motion can preserve the atmosphere of exceptional interior photography online."
+      content="A focused visual demonstration of how sequencing, typography, and restrained motion can carry the atmosphere of exceptional interior photography online."
     />
     <meta name="robots" content="noindex,follow" />
-    <meta name="theme-color" content="#0A0A0B" />
+    <meta name="theme-color" content="#18130f" />
     <link rel="icon" type="image/svg+xml" href="/og-bevamped.svg" />
     <link rel="canonical" href="https://www.bevamped.studio/more-than-a-gallery/" />
+    <link
+      rel="preload"
+      as="image"
+      href="/more-than-a-gallery/prologue-background.webp"
+      type="image/webp"
+      media="(min-width: 768px)"
+      fetchpriority="high"
+    />
+    <link
+      rel="preload"
+      as="image"
+      href="/more-than-a-gallery/prologue-background-mobile.webp"
+      type="image/webp"
+      media="(max-width: 767px)"
+      fetchpriority="high"
+    />
 
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content="BEVAMPED" />
     <meta property="og:title" content="When Exceptional Imagery Deserves More Than a Gallery" />
     <meta
       property="og:description"
-      content="A cinematic demonstration for interior photographers and design-led studios."
+      content="A cinematic demonstration of how exceptional imagery can become a considered digital experience."
     />
     <meta property="og:url" content="https://www.bevamped.studio/more-than-a-gallery/" />
     <meta
@@ -38,7 +57,7 @@
     />
     <meta
       name="twitter:description"
-      content="A cinematic demonstration for interior photographers and design-led studios."
+      content="A cinematic demonstration of how exceptional imagery can become a considered digital experience."
     />
     <meta
       name="twitter:image"
@@ -56,144 +75,345 @@
     </script>
   </head>
   <body class="gallery-demo">
-    <a class="skip-link" href="#demonstration-film">Skip to the demonstration film</a>
+    <a class="skip-link" href="#private-screening">Skip to the private screening</a>
 
-    <header class="demo-masthead" aria-label="BEVAMPED demonstration">
-      <div class="demo-wordmark" aria-label="BEVAMPED">
+    <header class="demo-masthead" aria-label="BEVAMPED private viewing">
+      <a class="demo-wordmark" href="#top" aria-label="BEVAMPED — return to the beginning">
         <span class="demo-wordmark__mark" aria-hidden="true"></span>
         <span>BEVAMPED</span>
-      </div>
-      <p>Private demonstration</p>
-      <p class="demo-masthead__index">01&nbsp;/&nbsp;01</p>
+      </a>
+      <p class="demo-masthead__note">
+        <span aria-hidden="true"></span>
+        Private viewing
+      </p>
     </header>
 
-    <main>
-      <section class="demo-hero" aria-labelledby="demo-title">
-        <div class="demo-hero__eyebrow">
-          <span>For interior photographers</span>
-          <span aria-hidden="true">+</span>
-        </div>
+    <main id="top">
+      <div class="cinematic-prologue">
+        <div class="cinematic-prologue__backdrop" aria-hidden="true"></div>
 
-        <h1 id="demo-title" class="demo-hero__title">
-          <span class="hero-line"><span class="hero-line__inner">When exceptional imagery</span></span>
-          <span class="hero-line hero-line--serif">
-            <span class="hero-line__inner">deserves more than a gallery</span>
-          </span>
-        </h1>
+        <section class="demo-hero" aria-labelledby="demo-title">
+        <div class="demo-hero__content">
+          <h1 id="demo-title" class="demo-hero__title">
+            <span class="hero-line">
+              <span class="hero-line__inner">When exceptional imagery</span>
+            </span>
+            <span class="hero-line hero-line--serif">
+              <span class="hero-line__inner">deserves more than a gallery</span>
+            </span>
+          </h1>
 
-        <div class="demo-hero__introduction">
-          <p>
-            Interior photography already carries atmosphere, detail and emotion. This is a short
-            demonstration of how sequencing, typography and restrained motion can preserve that
-            impact when the work moves onto a website.
-          </p>
-          <a class="demo-hero__cue" href="#demonstration-film">
-            <span>View the demonstration</span>
-            <span aria-hidden="true">↓</span>
-          </a>
-        </div>
-      </section>
-
-      <section id="demonstration-film" class="film-section" aria-labelledby="film-heading">
-        <div class="section-marker">
-          <span>01</span>
-          <h2 id="film-heading">The demonstration</h2>
-          <span>46 seconds</span>
-        </div>
-
-        <div class="film-stage" data-film-stage>
-          <video
-            class="film-stage__video"
-            data-film
-            muted
-            playsinline
-            preload="none"
-            poster="/more-than-a-gallery/poster.webp"
-            aria-describedby="film-description film-status"
-          ></video>
-          <div class="film-stage__veil" aria-hidden="true"></div>
-          <button class="film-stage__play" type="button" data-play aria-label="Play demonstration">
-            <span class="film-stage__play-icon" aria-hidden="true"></span>
-            <span data-play-label>Play film</span>
-          </button>
-          <p id="film-status" class="film-stage__status" data-film-status aria-live="polite">
-            Film ready
-          </p>
-        </div>
-
-        <div class="film-controls" aria-label="Film controls">
-          <button type="button" data-toggle-play>Play</button>
-          <div class="film-progress" aria-hidden="true">
-            <span data-progress></span>
+          <div class="demo-hero__introduction">
+            <p>
+              Interior photography already carries atmosphere, detail and emotion. This is a
+              short demonstration of how sequencing, typography and restrained motion can
+              preserve that impact when the work moves onto a website.
+            </p>
+            <a class="demo-hero__cue" href="#private-screening">
+              <span>Choose a concept</span>
+              <span class="demo-hero__cue-arrow" aria-hidden="true">↓</span>
+            </a>
           </div>
-          <button type="button" data-replay>Replay</button>
         </div>
 
-        <div id="film-description" class="film-caption">
-          <p>Sound intentionally absent.</p>
-          <p>
-            Concept explorations shown: Studio Bespoke, Laterite and XBD Collective. These are
-            design demonstrations, not commissioned client case studies.
-          </p>
+        </section>
+
+        <section
+          id="private-screening"
+          class="screening-section"
+          data-screening-section
+          aria-labelledby="screening-title"
+        >
+        <header class="screening-section__header">
+          <p>BEVAMPED / Website experience studies</p>
+          <div>
+            <h2 id="screening-title">Three digital experiences. One standard for imagery.</h2>
+            <p>
+              These are screen recordings of three independent website concepts—each built to let
+              interior imagery lead the experience. Select one to explore how the site moves, not
+              just how it looks.
+            </p>
+          </div>
+        </header>
+
+        <div class="screening-shell" data-screening-shell>
+          <div class="project-index" aria-label="Website concept recordings">
+            <button
+              class="project-card project-card--studio"
+              type="button"
+              data-project="studio-bespoke"
+              aria-pressed="false"
+            >
+              <img
+                src="/more-than-a-gallery/projects/studio-bespoke-poster.webp"
+                alt=""
+                width="1600"
+                height="900"
+              />
+              <span class="project-card__veil" aria-hidden="true"></span>
+              <span class="project-card__topline">
+                <span>01</span>
+                <span>Website concept</span>
+              </span>
+              <span class="project-card__identity">
+                <strong>Studio Bespoke</strong>
+                <span>Open recording</span>
+              </span>
+            </button>
+
+            <button
+              class="project-card"
+              type="button"
+              data-project="laterite"
+              aria-pressed="false"
+            >
+              <img
+                src="/more-than-a-gallery/projects/laterite-poster.webp"
+                alt=""
+                width="1600"
+                height="900"
+              />
+              <span class="project-card__veil" aria-hidden="true"></span>
+              <span class="project-card__topline">
+                <span>02</span>
+                <span>Website concept</span>
+              </span>
+              <span class="project-card__identity">
+                <strong>Laterite</strong>
+                <span>Open recording</span>
+              </span>
+            </button>
+
+            <button
+              class="project-card"
+              type="button"
+              data-project="xbd-collective"
+              aria-pressed="false"
+            >
+              <img
+                src="/more-than-a-gallery/projects/xbd-collective-poster.webp"
+                alt=""
+                width="1600"
+                height="900"
+              />
+              <span class="project-card__veil" aria-hidden="true"></span>
+              <span class="project-card__topline">
+                <span>03</span>
+                <span>Website concept</span>
+              </span>
+              <span class="project-card__identity">
+                <strong>XBD Collective</strong>
+                <span>Open recording</span>
+              </span>
+            </button>
+          </div>
+
+          <div class="project-stage" data-project-stage aria-hidden="true">
+            <div class="project-stage__topline">
+              <button type="button" data-close-project>
+                <span aria-hidden="true">←</span>
+                <span>Return to all 3 concepts</span>
+              </button>
+              <p>
+                <span data-project-number>01</span>
+                <span data-project-name>Studio Bespoke</span>
+              </p>
+            </div>
+
+            <div class="project-stage__frame" data-video-frame>
+              <video
+                data-project-video
+                muted
+                playsinline
+                preload="none"
+                aria-describedby="project-description project-status"
+              ></video>
+              <div class="project-stage__poster" data-stage-poster aria-hidden="true"></div>
+              <div class="project-stage__veil" aria-hidden="true"></div>
+              <button
+                class="project-stage__primary-play"
+                type="button"
+                data-primary-play
+                aria-label="Play selected website recording"
+              >
+                <span class="play-symbol" aria-hidden="true"></span>
+                <span data-primary-play-label>Play recording</span>
+              </button>
+              <p id="project-status" class="project-stage__status" data-project-status aria-live="polite">
+                Choose a concept to begin
+              </p>
+            </div>
+
+            <div class="project-controls" aria-label="Selected website recording controls">
+              <button type="button" data-toggle-play>Play recording</button>
+              <div class="project-progress" aria-hidden="true">
+                <span data-progress></span>
+              </div>
+              <time data-elapsed>00:00</time>
+              <button type="button" data-replay>Replay</button>
+            </div>
+
+            <div id="project-description" class="project-caption">
+              <p data-project-caption>Website concept recording — Studio Bespoke</p>
+              <p>Screen recording of an independent design study, not a commissioned client case study.</p>
+            </div>
+          </div>
         </div>
-      </section>
+        </section>
+      </div>
 
       <section class="approach-section" aria-labelledby="approach-title">
-        <div class="section-marker section-marker--dark">
-          <span>02</span>
-          <h2 id="approach-title">The intent</h2>
-          <span>Photography leads</span>
+        <div class="palette-threshold" aria-hidden="true"></div>
+
+        <div class="approach-statement" data-attention>
+          <p>What changes when imagery leads</p>
+          <h2 id="approach-title">
+            <span class="statement-muted">It is not about adding effects.</span>
+            <span class="statement-focus">It is about directing attention.</span>
+          </h2>
         </div>
 
-        <blockquote>
-          “The aim is not to decorate the photography with effects. It is to let the imagery
-          control the pace, hierarchy and emotional experience of the website.”
-        </blockquote>
+        <div class="principle-studies">
+          <article class="principle principle--scale" data-principle="scale">
+            <header class="principle__copy">
+              <p><span>01</span> BEVAMPED visual study</p>
+              <h3>Scale</h3>
+              <p>
+                Give the strongest frame enough space and stillness to be felt—not merely scanned.
+              </p>
+            </header>
+            <figure class="principle__media principle__media--scale">
+              <picture>
+                <source
+                  srcset="
+                    /more-than-a-gallery/principles/scale-640.webp 640w,
+                    /more-than-a-gallery/principles/scale-960.webp 960w,
+                    /more-than-a-gallery/principles/scale-1600.webp 1600w
+                  "
+                  sizes="(max-width: 767px) 100vw, 72vw"
+                />
+                <img
+                  src="/more-than-a-gallery/principles/scale-1600.webp"
+                  alt="Concept study of a double-height limestone living room opening onto a planted courtyard."
+                  width="1600"
+                  height="900"
+                  loading="lazy"
+                />
+              </picture>
+              <figcaption>One frame. Enough room to be felt.</figcaption>
+            </figure>
+          </article>
 
-        <ol class="principles" aria-label="Demonstration principles">
-          <li>
-            <span>01</span>
-            <h3>Photography first</h3>
-            <p>The image remains the primary source of atmosphere, authority and memory.</p>
-          </li>
-          <li>
-            <span>02</span>
-            <h3>Motion with restraint</h3>
-            <p>Movement opens thresholds and transfers attention; it never competes for it.</p>
-          </li>
-          <li>
-            <span>03</span>
-            <h3>Built around the project story</h3>
-            <p>Every sequence follows the light, material and emotional logic already in the work.</p>
-          </li>
-        </ol>
+          <article class="principle principle--sequence" data-principle="sequence">
+            <header class="principle__copy">
+              <p><span>02</span> BEVAMPED visual study</p>
+              <h3>Sequence</h3>
+              <p>
+                Let the project story decide what appears next instead of giving every image equal
+                weight.
+              </p>
+            </header>
+            <figure
+              class="principle__media principle__media--sequence"
+              role="img"
+              aria-label="Concept study of aligned limestone and dark-timber thresholds leading through connected rooms to a garden."
+            >
+              <span class="sequence-aperture" aria-hidden="true"></span>
+              <span class="sequence-aperture" aria-hidden="true"></span>
+              <span class="sequence-aperture" aria-hidden="true"></span>
+              <figcaption>Foreground. Threshold. Destination.</figcaption>
+            </figure>
+          </article>
+
+          <article class="principle principle--restraint" data-principle="restraint">
+            <header class="principle__copy">
+              <p><span>03</span> BEVAMPED visual study</p>
+              <h3>Restraint</h3>
+              <p>
+                Use typography and motion to guide the eye, then withdraw so the photography stays
+                in command.
+              </p>
+            </header>
+            <figure class="principle__media principle__media--restraint">
+              <picture>
+                <source
+                  srcset="
+                    /more-than-a-gallery/principles/restraint-640.webp 640w,
+                    /more-than-a-gallery/principles/restraint-960.webp 960w,
+                    /more-than-a-gallery/principles/restraint-1600.webp 1600w
+                  "
+                  sizes="(max-width: 767px) 100vw, 72vw"
+                />
+                <img
+                  src="/more-than-a-gallery/principles/restraint-1600.webp"
+                  alt="Concept study of a quiet plaster and dark-timber room shaped by one plane of natural light."
+                  width="1600"
+                  height="900"
+                  loading="lazy"
+                />
+              </picture>
+              <div class="restraint-metadata" aria-hidden="true">
+                <span>Typography / motion / space</span>
+                <span>Then the image leads</span>
+              </div>
+              <figcaption>Guide the eye, then leave the image alone.</figcaption>
+            </figure>
+          </article>
+        </div>
       </section>
 
-      <section class="contact-section" aria-labelledby="contact-title">
-        <div class="contact-section__identity">
-          <span>Isabel</span>
-          <span>BEVAMPED</span>
+      <footer class="contact-threshold" aria-labelledby="contact-title">
+        <div class="contact-threshold__content" data-contact-reveal>
+          <p class="contact-threshold__eyebrow">A cinematic digital experience by BEVAMPED</p>
+          <h2 id="contact-title">Let the website carry the atmosphere.</h2>
+          <div class="contact-threshold__action">
+            <p>
+              For work that deserves the same level of consideration online as it received behind
+              the lens.
+            </p>
+            <a
+              class="contact-threshold__email"
+              href="mailto:hello@bevamped.studio?subject=More%20than%20a%20gallery"
+              aria-label="Email BEVAMPED about More than a gallery"
+            >
+              <span>hello@bevamped.studio</span>
+              <span aria-hidden="true">↗</span>
+            </a>
+            <nav class="contact-threshold__secondary" aria-label="Other ways to connect">
+              <a href="https://www.bevamped.studio/">Visit BEVAMPED</a>
+              <a class="contact-threshold__whatsapp" href="https://wa.me/2347038243754" target="_blank" rel="noreferrer">
+                <svg viewBox="0 0 32 32" aria-hidden="true" focusable="false">
+                  <path d="M27 5A15.5 15.5 0 0 0 2.2 23.2L1 31l8-2.1A15.5 15.5 0 1 0 27 5Zm-11 23a12.3 12.3 0 0 1-6.2-1.7l-.4-.2-4.8 1.3 1.3-4.7-.3-.5A12.3 12.3 0 1 1 16 28Zm6.8-9.2c-.4-.2-2.3-1.1-2.7-1.2-.4-.2-.7-.2-1 .2-.3.4-1 1.2-1.2 1.5-.2.3-.5.3-.9.1-2.4-1.2-4-2.2-5.6-5-.4-.6.4-.6 1.1-2 .1-.3 0-.6-.1-.8-.1-.2-1-2.3-1.3-3.1-.3-.8-.7-.7-1-.7h-.8c-.3 0-.8.1-1.2.6-.4.5-1.6 1.6-1.6 4s1.6 4.6 1.8 4.9c.2.3 3.2 4.9 7.7 6.9 1.1.5 1.9.7 2.6.9 1.1.3 2.1.2 2.9.1.9-.1 2.3-1 2.6-2 .3-1 .3-1.9.2-2.1-.1-.1-.4-.2-.8-.4Z" />
+                </svg>
+                <span>WhatsApp</span>
+              </a>
+            </nav>
+          </div>
         </div>
-        <div class="contact-section__body">
-          <p>Cinematic digital experiences for interior and design-led brands.</p>
-          <h2 id="contact-title">If this is how your photography should feel online, let’s talk.</h2>
-          <a href="mailto:hello@bevamped.studio">
-            <span>hello@bevamped.studio</span>
-            <span aria-hidden="true">↗</span>
+
+        <div class="contact-threshold__wordmark" aria-hidden="true">BEVAMPED</div>
+
+        <div class="utility-footer">
+          <a href="https://instagram.com/bevampedstudio" target="_blank" rel="noreferrer">
+            Instagram
           </a>
+          <nav aria-label="Legal">
+            <a href="/privacy.html">Privacy</a>
+            <a href="/legal.html">Legal</a>
+          </nav>
+          <p>© 2026 BEVAMPED</p>
         </div>
-        <div class="contact-section__footer">
-          <span>Working globally</span>
-          <span>© 2026 BEVAMPED</span>
-        </div>
-      </section>
+      </footer>
     </main>
 
     <noscript>
       <style>
-        .film-stage__play,
-        .film-controls {
+        .project-stage {
           display: none !important;
+        }
+
+        .project-card {
+          clip-path: none !important;
         }
       </style>
     </noscript>
