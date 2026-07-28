@@ -1099,19 +1099,7 @@ a:focus-visible {
   width: min(100%, 92rem);
   margin-inline: auto;
   padding-bottom: clamp(11rem, 23vh, 18rem);
-  clip-path: inset(0 0 100% 0);
-  opacity: 0;
-  transform: translateY(1.5rem);
-}
-
-.contact-threshold.is-visible .contact-threshold__content {
-  clip-path: inset(0);
-  opacity: 1;
-  transform: translateY(0);
-  transition:
-    clip-path 900ms var(--demo-ease-out),
-    transform 900ms var(--demo-ease-out),
-    opacity 500ms ease-out;
+  will-change: transform;
 }
 
 /* eyebrow removed — no longer in DOM */
@@ -1235,7 +1223,7 @@ a:focus-visible {
   left: 50%;
   z-index: 0;
   width: max-content;
-  transform: translate(-50%, 10%);
+  transform: translate(-50%, 0);
   color: rgba(247, 243, 234, 0.12);
   font-family: var(--demo-serif);
   font-size: clamp(10rem, 24vw, 30rem);
@@ -1243,11 +1231,7 @@ a:focus-visible {
   line-height: 0.62;
   white-space: nowrap;
   pointer-events: none;
-}
-
-.contact-threshold.is-visible .contact-threshold__wordmark {
-  transform: translate(-50%, 0);
-  transition: transform 1.1s var(--demo-ease-out) 180ms;
+  will-change: transform;
 }
 
 .utility-footer {
