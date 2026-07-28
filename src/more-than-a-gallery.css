@@ -1231,7 +1231,7 @@ a:focus-visible {
   z-index: 0;
   width: max-content;
   transform: translate(-50%, 10%);
-  color: rgba(247, 243, 234, 0.045);
+  color: rgba(247, 243, 234, 0.12);
   font-family: var(--demo-serif);
   font-size: clamp(10rem, 24vw, 30rem);
   letter-spacing: -0.075em;
