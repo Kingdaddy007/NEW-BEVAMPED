@@ -840,14 +840,14 @@ a:focus-visible {
 
 .principle {
   display: grid;
-  grid-template-columns: minmax(15rem, 1fr) minmax(0, 3.2fr);
+  grid-template-columns: minmax(18rem, 1fr) minmax(0, 3fr);
   grid-template-areas: 'copy media';
-  gap: clamp(2rem, 6vw, 8rem);
+  gap: clamp(2rem, 5vw, 6rem);
   align-items: end;
 }
 
 .principle--sequence {
-  grid-template-columns: minmax(0, 3.2fr) minmax(15rem, 1fr);
+  grid-template-columns: minmax(0, 2.4fr) minmax(20rem, 1.2fr);
   grid-template-areas: 'media copy';
 }
 
@@ -876,10 +876,10 @@ a:focus-visible {
 .principle__copy h3 {
   margin: clamp(2rem, 5vh, 4rem) 0 1.5rem;
   font-family: var(--demo-serif);
-  font-size: clamp(4rem, 7vw, 8.5rem);
+  font-size: clamp(3.2rem, 5.2vw, 6.8rem);
   font-weight: 400;
-  letter-spacing: -0.055em;
-  line-height: 0.8;
+  letter-spacing: -0.04em;
+  line-height: 0.88;
 }
 
 .principle__copy > p:last-child {
