@@ -964,15 +964,15 @@ a:focus-visible {
 
 .principle.is-visible .sequence-aperture {
   clip-path: inset(0);
-  transition: clip-path 900ms var(--demo-ease-out);
+  transition: clip-path 1.2s var(--demo-ease-out);
 }
 
 .principle.is-visible .sequence-aperture:nth-child(2) {
-  transition-delay: 90ms;
+  transition-delay: 240ms;
 }
 
 .principle.is-visible .sequence-aperture:nth-child(3) {
-  transition-delay: 180ms;
+  transition-delay: 480ms;
 }
 
 .principle__media--sequence figcaption {
