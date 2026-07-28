@@ -1,4 +1,23 @@
 import './more-than-a-gallery.css';
+import gsap from 'gsap';
+import ScrollTrigger from 'gsap/ScrollTrigger';
+import Lenis from 'lenis';
+
+gsap.registerPlugin(ScrollTrigger);
+
+// Smooth scrolling — matches the main BEVAMPED site
+const lenis = new Lenis({
+  lerp: 0.08,
+  smoothWheel: true,
+});
+
+lenis.on('scroll', ScrollTrigger.update);
+
+gsap.ticker.add((time) => {
+  lenis.raf(time * 1000);
+});
+
+gsap.ticker.lagSmoothing(0);
 
 type ProjectId = 'studio-bespoke' | 'laterite' | 'xbd-collective';
 
@@ -337,9 +356,70 @@ video?.addEventListener('error', () => {
   }
   updateProjectControls();
 });
+// Footer Curtain-Reveal Parallax — matches the main BEVAMPED site
+function initFooterParallax(): void {
+  if (prefersReducedMotion) return;
+
+  const mm = gsap.matchMedia();
+
+  // Desktop: deep parallax — content rises from below as you scroll into the footer
+  mm.add('(min-width: 768px)', () => {
+    // The background image has a slower parallax than the content
+    gsap.from('.contact-threshold__bg', {
+      yPercent: -20,
+      ease: 'none',
+      scrollTrigger: {
+        trigger: '.contact-threshold',
+        start: 'top bottom',
+        end: 'bottom bottom',
+        scrub: true,
+      },
+    });
+
+    // Footer content + wordmark rise into place
+    gsap.from('.contact-threshold__content, .contact-threshold__wordmark', {
+      yPercent: -40,
+      scale: 0.95,
+      ease: 'none',
+      scrollTrigger: {
+        trigger: '.contact-threshold',
+        start: 'top bottom',
+        end: 'bottom bottom',
+        scrub: true,
+      },
+    });
+  });
+
+  // Mobile: subtler parallax to prevent heavy top cutoff
+  mm.add('(max-width: 767px)', () => {
+    gsap.from('.contact-threshold__bg', {
+      yPercent: -10,
+      ease: 'none',
+      scrollTrigger: {
+        trigger: '.contact-threshold',
+        start: 'top bottom',
+        end: 'bottom bottom',
+        scrub: true,
+      },
+    });
+
+    gsap.from('.contact-threshold__content, .contact-threshold__wordmark', {
+      yPercent: -20,
+      scale: 0.97,
+      ease: 'none',
+      scrollTrigger: {
+        trigger: '.contact-threshold',
+        start: 'top bottom',
+        end: 'bottom bottom',
+        scrub: true,
+      },
+    });
+  });
+}
 
 revealPage();
 observePageChapters();
 pauseVideoWhenOffscreen();
+initFooterParallax();
 updateProjectControls();
 updateProgress();

@@ -749,6 +749,7 @@ a:focus-visible {
 
 .approach-section {
   position: relative;
+  z-index: 2;
   overflow: hidden;
   background: var(--demo-paper);
   color: var(--demo-espresso);
@@ -1039,17 +1040,52 @@ a:focus-visible {
     clamp(6rem, 13vh, 10rem)
     var(--demo-gutter)
     0;
-  background: var(--demo-ivory);
-  color: var(--demo-espresso);
+  color: var(--demo-ivory);
   isolation: isolate;
 }
 
+/* — Full-bleed background image — */
+.contact-threshold__bg {
+  position: absolute;
+  inset: 0;
+  z-index: -2;
+  background:
+    url('/more-than-a-gallery/footer-background.png')
+    center center / cover no-repeat;
+}
+
+/* — Subtle dark scrim so text stays readable — */
 .contact-threshold::before {
   content: '';
   position: absolute;
-  inset: clamp(1.25rem, 3vw, 3rem) clamp(1.25rem, 3vw, 3rem) 4.5rem;
+  inset: 0;
   z-index: -1;
-  border: 1px solid rgba(23, 19, 15, 0.12);
+  background:
+    linear-gradient(
+      180deg,
+      rgba(18, 15, 13, 0.32) 0%,
+      rgba(18, 15, 13, 0.18) 40%,
+      rgba(18, 15, 13, 0.38) 100%
+    );
+  pointer-events: none;
+}
+
+/* — Luminous horizon line at the top of the reveal — */
+.contact-threshold::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(185, 155, 76, 0.35) 20%,
+    rgba(185, 155, 76, 0.5) 50%,
+    rgba(185, 155, 76, 0.35) 80%,
+    transparent 100%
+  );
   pointer-events: none;
 }
 
@@ -1073,15 +1109,7 @@ a:focus-visible {
     opacity 500ms ease-out;
 }
 
-.contact-threshold__eyebrow {
-  margin-bottom: clamp(3rem, 8vh, 6rem);
-  color: #5e564b;
-  font-family: var(--demo-ui);
-  font-size: 0.66rem;
-  font-weight: 500;
-  letter-spacing: 0.15em;
-  text-transform: uppercase;
-}
+/* eyebrow removed — no longer in DOM */
 
 .contact-threshold h2 {
   max-width: 86rem;
@@ -1099,62 +1127,100 @@ a:focus-visible {
 
 .contact-threshold__action > p {
   max-width: 33rem;
-  color: #443d35;
-  font-size: clamp(0.85rem, 1vw, 1rem);
+  color: rgba(247, 243, 234, 0.88);
+  font-size: clamp(0.9rem, 1.1vw, 1.05rem);
   line-height: 1.75;
 }
 
+/* — Email CTA — primary call to action — */
+.contact-threshold__ctas {
+  margin-top: 2.5rem;
+}
+
 .contact-threshold__email {
-  display: flex;
-  justify-content: space-between;
+  display: grid;
+  grid-template-columns: auto 1fr auto;
   gap: 1rem;
   align-items: center;
   min-height: 4.5rem;
-  margin-top: 2rem;
-  border-top: 1px solid var(--demo-line-light);
-  border-bottom: 1px solid var(--demo-line-light);
+  padding: 1.25rem 1.5rem;
+  border: 1px solid rgba(247, 243, 234, 0.25);
+  border-radius: 2px;
   font-family: var(--demo-ui);
-  font-size: clamp(0.95rem, 1.4vw, 1.25rem);
-  letter-spacing: 0.03em;
+  text-decoration: none;
   transition:
-    color 240ms ease-out,
-    padding 350ms var(--demo-ease-out);
+    border-color 300ms ease-out,
+    background 300ms ease-out;
 }
 
 .contact-threshold__email:hover {
-  padding-inline: 0.7rem;
-  color: #8d701e;
+  border-color: var(--demo-gold);
+  background: rgba(185, 155, 76, 0.08);
 }
 
-.contact-threshold__secondary {
-  display: flex;
-  gap: 2rem;
-  margin-top: 1rem;
-  font-family: var(--demo-ui);
-  font-size: 0.64rem;
-  font-weight: 500;
-  letter-spacing: 0.14em;
+.cta-label {
+  font-size: 0.62rem;
+  font-weight: 600;
+  letter-spacing: 0.16em;
   text-transform: uppercase;
+  color: rgba(247, 243, 234, 0.55);
 }
 
-.contact-threshold__secondary a {
-  min-height: 44px;
+.cta-address {
+  font-size: clamp(0.95rem, 1.4vw, 1.25rem);
+  letter-spacing: 0.03em;
+  color: var(--demo-ivory);
+}
+
+.cta-arrow {
+  font-size: 1.1rem;
+  color: rgba(247, 243, 234, 0.45);
+  transition: color 300ms ease-out, transform 300ms ease-out;
+}
+
+.contact-threshold__email:hover .cta-arrow {
+  color: var(--demo-gold);
+  transform: translateX(3px);
+}
+
+/* — Pill-style buttons — */
+.contact-threshold__buttons {
+  display: flex;
+  gap: 0.75rem;
+  margin-top: 1.25rem;
+}
+
+.cta-pill {
   display: inline-flex;
   align-items: center;
+  gap: 0.6rem;
+  padding: 0.75rem 1.5rem;
+  border: 1px solid rgba(247, 243, 234, 0.2);
+  border-radius: 2px;
+  font-family: var(--demo-ui);
+  font-size: 0.78rem;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  color: var(--demo-ivory);
+  text-decoration: none;
+  transition:
+    border-color 300ms ease-out,
+    background 300ms ease-out;
 }
 
-.contact-threshold__secondary a:hover {
-  color: #8d701e;
+.cta-pill:hover {
+  border-color: var(--demo-gold);
+  background: rgba(185, 155, 76, 0.08);
 }
 
-.contact-threshold__whatsapp {
-  gap: 0.45rem;
-  font-weight: 600;
+.cta-pill:hover .cta-arrow {
+  color: var(--demo-gold);
+  transform: translateX(2px);
 }
 
-.contact-threshold__whatsapp svg {
-  width: 1rem;
-  height: 1rem;
+.cta-pill--whatsapp svg {
+  width: 1.1rem;
+  height: 1.1rem;
   fill: currentColor;
 }
 
@@ -1162,10 +1228,10 @@ a:focus-visible {
   position: absolute;
   bottom: 2.25rem;
   left: 50%;
-  z-index: -1;
+  z-index: 0;
   width: max-content;
   transform: translate(-50%, 10%);
-  color: rgba(23, 19, 15, 0.075);
+  color: rgba(247, 243, 234, 0.045);
   font-family: var(--demo-serif);
   font-size: clamp(10rem, 24vw, 30rem);
   letter-spacing: -0.075em;
@@ -1190,8 +1256,10 @@ a:focus-visible {
   padding:
     0 var(--demo-gutter)
     max(0rem, env(safe-area-inset-bottom));
-  border-top: 1px solid rgba(185, 155, 76, 0.46);
-  background: #282018;
+  border-top: 1px solid rgba(247, 243, 234, 0.1);
+  background: rgba(18, 15, 13, 0.6);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
   color: var(--demo-ivory);
   font-family: var(--demo-ui);
   font-size: 0.6rem;
@@ -1455,10 +1523,6 @@ a:focus-visible {
     padding: 6rem 1.25rem 0;
   }
 
-  .contact-threshold::before {
-    inset: 1.25rem 1.25rem 4.5rem;
-  }
-
   .contact-threshold__content {
     padding: 2rem 0 13rem;
   }
@@ -1473,12 +1537,17 @@ a:focus-visible {
   }
 
   .contact-threshold__email {
-    font-size: 0.92rem;
+    grid-template-columns: 1fr auto;
+    gap: 0.5rem 1rem;
+    padding: 1rem 1.25rem;
   }
 
-  .contact-threshold__secondary {
-    justify-content: space-between;
-    gap: 1rem;
+  .cta-label {
+    grid-column: 1 / -1;
+  }
+
+  .contact-threshold__buttons {
+    flex-direction: column;
   }
 
   .contact-threshold__wordmark {
@@ -1514,7 +1583,7 @@ a:focus-visible {
 @media (pointer: coarse) {
   .project-stage__topline button,
   .project-controls button,
-  .contact-threshold__secondary a,
+  .cta-pill,
   .utility-footer a {
     min-height: 44px;
   }
