@@ -210,7 +210,7 @@ a:focus-visible {
 .reveal-line {
   display: block;
   overflow: hidden;
-  padding: 0.06em 0 0.1em;
+  padding: 0.06em 0.25em 0.1em 0;
 }
 
 .hero-line__inner,
@@ -956,19 +956,19 @@ a:focus-visible {
   clip-path: inset(100% 0 0);
   background-image: url('/more-than-a-gallery/principles/sequence.png');
   background-repeat: no-repeat;
-  background-size: 300% 100%;
+  background-size: cover;
 }
 
 .sequence-aperture:nth-child(1) {
-  background-position: left center;
+  background-position: 0% center;
 }
 
 .sequence-aperture:nth-child(2) {
-  background-position: center center;
+  background-position: 50% center;
 }
 
 .sequence-aperture:nth-child(3) {
-  background-position: right center;
+  background-position: 100% center;
 }
 
 .principle.is-visible .sequence-aperture {
