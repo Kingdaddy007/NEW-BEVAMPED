@@ -63,6 +63,20 @@ function initLoader() {
 
   if (!loaderScreen) return;
 
+  const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (prefersReducedMotion) {
+    gsap.set(loaderScreen, { display: 'none' });
+    gsap.set('.hero-word, .hero-subtext, .hero-capabilities', {
+      y: '0%',
+      opacity: 1,
+    });
+    document.body.classList.remove('loader-active');
+    requestAnimationFrame(() => {
+      document.dispatchEvent(new Event('loaderComplete'));
+    });
+    return;
+  }
+
   const tl = gsap.timeline();
 
   // Set initial states
@@ -72,50 +86,50 @@ function initLoader() {
   // Action 1: Fade in the split logo (Perception Gap is wide)
   tl.to(['.loader-be', '.loader-vamped'], {
     opacity: 1,
-    duration: 1.2,
+    duration: 0.95,
     ease: "power2.out"
   });
 
   // Hold for a moment to establish the gap
-  tl.to({}, { duration: 0.5 });
+  tl.to({}, { duration: 0.3 });
 
   // Action 2: Slide together (Closing the Perception Gap)
   tl.to('.loader-be', {
     x: 0,
-    duration: 1.2,
+    duration: 0.9,
     ease: "power3.inOut"
   }, "join");
   
   tl.to('.loader-vamped', {
     x: 0,
-    duration: 1.2,
+    duration: 0.9,
     ease: "power3.inOut"
   }, "join");
 
   // Hold for the click moment
-  tl.to({}, { duration: 0.4 });
+  tl.to({}, { duration: 0.25 });
 
   // Action 3: The Wipe (Gallery Doors split open)
   // First, fade the logo slightly
   tl.to('.loader-logo-split', {
     opacity: 0,
     scale: 0.95,
-    duration: 0.8,
+    duration: 0.6,
     ease: "power2.inOut"
   }, "wipe");
 
   // Wipe the doors
   tl.to('.loader-door.top', {
     yPercent: -100,
-    duration: 1.4,
+    duration: 1.1,
     ease: "power3.inOut"
-  }, "wipe+=0.2");
+  }, "wipe+=0.15");
   
   tl.to('.loader-door.bottom', {
     yPercent: 100,
-    duration: 1.4,
+    duration: 1.1,
     ease: "power3.inOut"
-  }, "wipe+=0.2");
+  }, "wipe+=0.15");
 
   // Action 4: Clean up loader DOM and dispatch event
   tl.set(loaderScreen, {
@@ -130,16 +144,16 @@ function initLoader() {
   tl.to('.hero-word', {
     y: '0%',
     opacity: 1,
-    duration: 1.2,
+    duration: 1.0,
     stagger: 0.15,
     ease: 'power3.out'
-  }, "wipe+=0.6"); 
+  }, "wipe+=0.45");
 
   // Action 6: Fade in subtext and capabilities
   tl.fromTo('.hero-subtext, .hero-capabilities', 
     { y: 30, opacity: 0 },
-    { y: 0, opacity: 1, duration: 1.2, ease: 'power3.out', stagger: 0.2 },
-    "wipe+=1.0"
+    { y: 0, opacity: 1, duration: 0.95, ease: 'power3.out', stagger: 0.2 },
+    "wipe+=0.75"
   );
 }
 
