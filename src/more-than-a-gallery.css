@@ -945,7 +945,7 @@ a:focus-visible {
   position: relative;
   overflow: hidden;
   clip-path: inset(100% 0 0);
-  background-image: url('/more-than-a-gallery/principles/sequence-1600.webp');
+  background-image: url('/more-than-a-gallery/principles/sequence.png');
   background-repeat: no-repeat;
   background-size: 300% 100%;
 }
@@ -1516,7 +1516,7 @@ a:focus-visible {
   }
 
   .sequence-aperture {
-    background-image: url('/more-than-a-gallery/principles/sequence-960.webp');
+    background-image: url('/more-than-a-gallery/principles/sequence.png');
   }
 
   .restraint-metadata {
