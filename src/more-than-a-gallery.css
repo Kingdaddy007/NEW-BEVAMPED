@@ -897,11 +897,11 @@ a:focus-visible {
   display: flex;
   justify-content: flex-end;
   padding-top: 0.85rem;
-  color: #5e564c;
+  color: #383129;
   font-family: var(--demo-ui);
-  font-size: 0.58rem;
+  font-size: 0.72rem;
   font-weight: 500;
-  letter-spacing: 0.13em;
+  letter-spacing: 0.12em;
   text-transform: uppercase;
 }
 
@@ -930,6 +930,10 @@ a:focus-visible {
 }
 
 .principle__media--sequence {
+  position: relative;
+}
+
+.sequence-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: clamp(0.45rem, 0.8vw, 0.8rem);
@@ -972,9 +976,8 @@ a:focus-visible {
 }
 
 .principle__media--sequence figcaption {
-  position: absolute;
-  right: 0;
-  bottom: -2rem;
+  position: static;
+  margin-top: 0.85rem;
 }
 
 .principle__media--restraint {
@@ -1007,8 +1010,8 @@ a:focus-visible {
   border-bottom: 1px solid rgba(247, 243, 234, 0.55);
   color: var(--demo-ivory);
   font-family: var(--demo-ui);
-  font-size: 0.52rem;
-  letter-spacing: 0.13em;
+  font-size: 0.68rem;
+  letter-spacing: 0.14em;
   text-transform: uppercase;
   opacity: 1;
 }
