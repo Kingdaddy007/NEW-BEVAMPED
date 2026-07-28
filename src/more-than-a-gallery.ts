@@ -267,7 +267,15 @@ function revealPage(): void {
     return;
   }
 
-  requestAnimationFrame(() => document.documentElement.classList.add('is-ready'));
+  const triggerReady = (): void => {
+    requestAnimationFrame(() => document.documentElement.classList.add('is-ready'));
+  };
+
+  if ('fonts' in document) {
+    document.fonts.ready.then(triggerReady).catch(triggerReady);
+  } else {
+    triggerReady();
+  }
 }
 
 function observePageChapters(): void {

@@ -206,16 +206,19 @@ a:focus-visible {
   text-shadow: 0 0.18rem 1.6rem rgba(0, 0, 0, 0.25);
 }
 
-.hero-line {
+.hero-line,
+.reveal-line {
   display: block;
   overflow: hidden;
   padding: 0.06em 0 0.1em;
 }
 
-.hero-line__inner {
+.hero-line__inner,
+.reveal-line__inner {
   display: block;
   transform: translateY(118%);
   opacity: 0;
+  will-change: transform, opacity;
 }
 
 .hero-line--serif {
@@ -225,7 +228,10 @@ a:focus-visible {
   letter-spacing: -0.045em;
 }
 
-.is-ready .hero-line__inner {
+.is-ready .hero-line__inner,
+.is-revealed .reveal-line__inner,
+.is-focused .reveal-line__inner,
+.is-visible .reveal-line__inner {
   transform: translateY(0);
   opacity: 1;
   transition:
@@ -233,7 +239,10 @@ a:focus-visible {
     opacity 420ms ease-out;
 }
 
-.is-ready .hero-line:nth-child(2) .hero-line__inner {
+.is-ready .hero-line:nth-child(2) .hero-line__inner,
+.is-revealed .reveal-line:nth-child(2) .reveal-line__inner,
+.is-focused .reveal-line:nth-child(2) .reveal-line__inner,
+.is-visible .reveal-line:nth-child(2) .reveal-line__inner {
   transition-delay: 130ms;
 }
 
