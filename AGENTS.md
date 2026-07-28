@@ -13,6 +13,7 @@ This is the root directory of a Vite-powered Multi-Page Application (MPA) implem
 - `/vertical.html`: Entry point for the 3D cylinder carousel.
 - `/horizontal.html`: Entry point for the horizontal scrolling gallery (currently skeleton).
 - `/preview.html`: Entry point for the animation playground.
+- `/more-than-a-gallery/`: Unlisted cinematic proof page for photographer outreach.
 - `/vite.config.ts`: Configuration file defining build targets and Rollup bundle options.
 - `/DESIGN.json`: Defines custom CSS/design variables for colors, typography, layout grid, breakpoints, and motion defaults.
 
@@ -25,4 +26,4 @@ This is the root directory of a Vite-powered Multi-Page Application (MPA) implem
 
 ## 5. Verification
 - Run `npm run build` to verify that all HTML entry points compile successfully.
-- Verify that `dist/` is successfully created with index, vertical, and horizontal bundles.
+- Verify that `dist/` includes the homepage, legal pages, and `/more-than-a-gallery/` entry.

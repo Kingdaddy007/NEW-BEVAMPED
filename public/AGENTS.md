@@ -14,6 +14,7 @@ This directory serves as the root host folder for high-resolution static media a
 - `/images/`: Folder holding static photo materials.
 - `/icons.svg`: SVG icon sprite sheet.
 - `/favicon.svg`: Icon manifest symbol.
+- `/more-than-a-gallery/`: Optimized desktop/mobile demonstration films, poster, and social-sharing artwork.
 
 ## 4. Internal Dependencies
 - None.

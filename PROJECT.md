@@ -7,6 +7,7 @@ The application runs as a Vite-powered Multi-Page Application (MPA).
 - /src/utils/: Shared helper utilities (e.g., smooth scroll initialization bridging Lenis and GSAP).
 - /src/assets/: Small static assets like icons/logos.
 - /public/: Static video clips and brand assets.
+- /more-than-a-gallery/: Unlisted MPA entry for the cinematic photographer demonstration.
 - /contexts/: Diagnostic visual and accessibility issue trackers.
 - /scratch/: Isolated playground scripts (Python, sandboxed HTML) and text dumps.
 - /research results/: Motion design reference documentation.
@@ -20,6 +21,9 @@ The application runs as a Vite-powered Multi-Page Application (MPA).
 | 4 | Verification Review | Audit all AGENTS.md files for DOX compliance and ensure no implementation code changes | M2, M3 | PLANNED |
 
 ## Interface Contracts
+### Demonstration Route
+- `/more-than-a-gallery/`: A standalone, `noindex` proof experience with lazy-loaded desktop/mobile film sources and a mailto-only inquiry action.
+
 ### Main Script (src/main.ts) ↔ Smooth Scroll Utility (src/utils/scroll.ts)
 - `initSmoothScroll()`: Returns a `Lenis` instance and sets up tickers for syncing GSAP and Lenis.
 ### Vertical Script (src/vertical.ts) ↔ Smooth Scroll Utility (src/utils/scroll.ts)

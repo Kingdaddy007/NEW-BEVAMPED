@@ -15,6 +15,7 @@ This directory contains the core application logic, styling manifests, and view-
 - `horizontal.ts`: Horizontal gallery timeline and transitions (skeleton).
 - `preview.ts`: Typography animations testbed.
 - `style.css`: Core CSS stylesheet importing luxury theme definitions and layout parameters.
+- `more-than-a-gallery.ts` and `more-than-a-gallery.css`: Isolated media lifecycle and visual system for the unlisted photographer demonstration.
 
 ## 4. Internal Dependencies
 - `src/utils/`: Imports smooth scroll wrapper functions (Lenis integrations).

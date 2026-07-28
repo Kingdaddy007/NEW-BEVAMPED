@@ -8,6 +8,7 @@ export default defineConfig({
         main: resolve(__dirname, 'index.html'),
         privacy: resolve(__dirname, 'privacy.html'),
         legal: resolve(__dirname, 'legal.html'),
+        moreThanAGallery: resolve(__dirname, 'more-than-a-gallery/index.html'),
       },
     },
   },
