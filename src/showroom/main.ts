@@ -1,5 +1,5 @@
 import './direction.css';
-import { mountStudioMark } from './studio-mark';
+import { mountExposure } from './exposure';
 import gsap from 'gsap';
 import { mountInstrument } from './instrument';
 
@@ -212,11 +212,11 @@ function sectionLight(){
 }
 sectionLight();
 
-const stage=document.querySelector<HTMLElement>('.studio-opening');
+const stage=document.querySelector<HTMLElement>('.exposure');
 if(stage){
   exhibition();
   previewControls();
-  mountStudioMark(stage, reduce);
+  mountExposure(stage, reduce);
 }
 const header=document.querySelector<HTMLElement>('.site-head');
 if(header){

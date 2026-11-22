@@ -1,0 +1,61 @@
+body:has(.exposure) .site-head { background:transparent;color:#242238; }
+body:has(.exposure) .site-head.compact { color:#fff8eb; }
+body:has(.exposure) .mast .action { border-color:currentColor; }
+body:has(.exposure) .mast::after { content:""; position:absolute;bottom:0;left:var(--gut);right:var(--gut);height:1px;background:currentColor;opacity:.25;pointer-events:none; }
+body:has(.exposure) .compact .mast::after { opacity:0; }
+.exposure {
+  position:relative;isolation:isolate;overflow:clip;margin-top:-76px;
+  min-height:max(590px,100svh);color:#252437;background:#ece8df;
+}
+.exposure-print,.exposure-film { position:absolute;inset:0;width:100%;height:100%;z-index:-1;pointer-events:none; }
+.exposure-print {
+  background:#eee8dd url('/flagship/media/exposure-print.webp') center/100% 100% no-repeat;
+}
+.exposure-film { opacity:0; }
+.exposure.live .exposure-film { opacity:1; }
+.exposure-layout {
+  width:100%;min-height:inherit;display:flex;flex-direction:column;
+  justify-content:center;align-items:flex-start;padding:105px var(--gut) clamp(44px,7vh,90px);
+}
+.exposure-title {
+  font:400 clamp(95px,min(14.6vw,24svh),285px)/.81 Baskerville,"Baskerville Old Face","Times New Roman",serif;
+  letter-spacing:-.057em;text-wrap:initial; margin: auto 0;
+}
+.exposure-title span { white-space:nowrap; }
+.exposure-title .lead-word,.exposure-title .second-phrase { display:block; }
+.exposure-title .lead-word { width:fit-content; }
+.exposure-title .second-phrase { margin-left:clamp(65px,16vw,330px);margin-top:.015em; }
+.exposure-title .link-word {font-style:italic;font-size:.46em;letter-spacing:-.055em;vertical-align:.37em;margin-right:.12em;}
+.exposure-title i { display:inline-block;width:0;height:0; }
+.exposure.live .exposure-title { color:transparent; }
+.exposure-notes { position:relative;max-width:38ch; margin-top:20px; }
+.exposure-notes .practice { font:500 clamp(19px,1.55vw,26px)/1.16 var(--display);letter-spacing:-.019em; }
+.exposure-notes .sequence { margin-top:10px;font-size:clamp(16px,1.13vw,20px);line-height:1.42; }
+.light-dial { position:absolute;bottom:clamp(44px,7vh,90px);right:var(--gut);display:flex;align-items:center;gap:12px;color:#29263a;background:#f7f0e4e8;border-radius:2px;padding:9px 13px;font-size:14px; }
+.light-dial[hidden] { display:none; }
+.light-dial input { appearance:none;cursor:ew-resize;width:83px;height:20px;background:transparent; }
+.light-dial input::-webkit-slider-runnable-track { height:1px;background:#666274; }
+.light-dial input::-webkit-slider-thumb { appearance:none;border:1px solid #342d48;width:12px;height:12px;border-radius:50%;background:#342d48;margin-top:-5.5px; }
+.light-dial input::-moz-range-track { height:1px;background:#666274; }
+.light-dial input::-moz-range-thumb { width:12px;height:12px;border:0;border-radius:50%;background:#342d48; }
+.light-dial input:focus-visible { outline:2px solid #302c42;outline-offset:2px; }
+@media(max-width:760px) {
+ .exposure {margin-top:-62px;min-height:max(560px,100svh);}
+ .exposure-layout {padding:94px var(--gut) 92px;}
+ .exposure-title { font-size:clamp(86px,21vw,150px);line-height:.94;}
+ .exposure-title .second-phrase { margin-left:5vw;margin-top:-.035em;}
+ .exposure-notes {max-width:32ch;}
+ .light-dial {bottom:22px;right:var(--gut);padding:5px 10px;}
+}
+@media(prefers-reduced-motion:no-preference) {
+ .play-ident .exposure.live .exposure-notes {animation:expose-notes .75s 1.12s backwards;}
+ .play-ident .exposure.live .sequence {animation:expose-notes .75s 1.42s backwards;}
+ .approach-steps article.in-frame,.commission.in-frame .action,.colophon.in-frame .foot-email {animation:expose-notes .65s backwards;}
+ .instrument .composition.in-frame {animation:open-study .9s var(--ease) backwards;}
+ @keyframes expose-notes {from {opacity:0;filter:blur(1.5px)} to {opacity:1;filter:none}}
+ @keyframes open-study {from {clip-path:inset(8% 0)} to {clip-path:inset(0)}}
+}
+@media(forced-colors:active) {
+ .exposure.live .exposure-title { color:CanvasText; }
+ .exposure-film,.exposure-print {display:none;}
+}

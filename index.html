@@ -1,24 +1,25 @@
 <!doctype html>
 <html lang="en"><head>
   <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>BEVAMPED — Cinematic websites for interior studios</title><meta name="description" content="An independent digital showroom studio. Explore three websites designed and built by BEVAMPED for interior design and architecture."><meta name="theme-color" content="#201c21">
+  <title>BEVAMPED — Cinematic websites for interior studios</title><meta name="description" content="An independent digital showroom studio. Explore three websites designed and built by BEVAMPED for interior design and architecture."><meta name="theme-color" content="#eeeadf">
   <link rel="icon" href="/og-bevamped.svg"><link rel="canonical" href="https://www.bevamped.studio/">
   <meta property="og:type" content="website"><meta property="og:title" content="BEVAMPED — Cinematic websites for interior studios"><meta property="og:description" content="An independent digital showroom studio. Explore three websites designed and built by BEVAMPED for interior design and architecture."><meta property="og:url" content="https://www.bevamped.studio/"><meta property="og:image" content="https://www.bevamped.studio/og-bevamped.png">
   <link rel="preload" href="/flagship/fonts/BarlowSemiCondensed-Medium.ttf" as="font" type="font/ttf" crossorigin>
   <script>if (!location.hash && !matchMedia('(prefers-reduced-motion: reduce)').matches && (performance.getEntriesByType('navigation')[0]?.type !== 'back_forward')) document.documentElement.classList.add('play-ident');</script>
-  <link rel="stylesheet" href="/src/showroom/style.css"><link rel="stylesheet" href="/src/showroom/studio-mark.css"><script type="module" src="/src/showroom/main.ts"></script>
+  <link rel="stylesheet" href="/src/showroom/style.css"><link rel="stylesheet" href="/src/showroom/exposure.css"><script type="module" src="/src/showroom/main.ts"></script>
 </head>
 <body id="top"><a class="skip" href="#work">Skip to selected websites</a>
 <header class="site-head"><nav class="mast" aria-label="Primary"><a class="brand" href="/" aria-label="BEVAMPED home">BE<span>VAMPED</span></a><div><a href="/#work">Work</a><a href="/#approach">Approach</a><a class="action" href="/commission/">Enquire <span>↗</span></a></div></nav></header>
-<section class="studio-opening" aria-labelledby="offer">
-  <div class="mark-field" aria-hidden="true">
-    <div class="mark-volume"><img src="/flagship/media/studio-mark.webp" alt="" width="768" height="768" fetchpriority="high"><canvas></canvas></div>
+<section class="exposure" aria-labelledby="offer">
+  <div class="exposure-print" aria-hidden="true"></div>
+  <canvas class="exposure-film" aria-hidden="true"></canvas>
+  <div class="exposure-layout">
+    <h1 class="exposure-title" id="offer"><span class="lead-word">Room<i></i></span> <span class="second-phrase"><span class="link-word">to<i></i></span> <span class="last-word">screen.<i></i></span></span></h1>
+    <div class="exposure-notes"><p class="practice">Cinematic websites for interior studios.</p>
+      <p class="sequence">A material detail, a pause, then the whole room. We design how your work unfolds online.</p>
+    </div>
   </div>
-  <div class="studio-statement">
-    <h1 id="offer"><span><b>Websites with a</b></span> <span><b>sense of space.</b></span></h1>
-    <p>We design and build cinematic websites for interior studios. From the scale of a room to the edge of a material, we shape what your visitors see first.</p>
-  </div>
-  <a class="mark-scroll" href="#work"><span aria-hidden="true">↓</span> Selected work</a>
+  <label class="light-dial" hidden><span>Light angle</span><input type="range" name="light-angle" min="-100" max="100" value="0"></label>
 </section>
 <main>
   <section class="work" id="work" aria-labelledby="work-title">
