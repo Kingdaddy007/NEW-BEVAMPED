@@ -11,9 +11,9 @@ void main() {
 export const fragmentSource = `
 precision highp float;
 varying vec2 uv;
-uniform sampler2D ink;
+
 uniform vec2 pointer;
-uniform float angle, phase, exitAmount, intro, portrait, paperOnly;
+uniform float angle, phase, exitAmount, intro, portrait;
 float bell(float d,float width){return exp(-d*d/(width*width));}
 float noise(vec2 p){
   vec3 h=fract(vec3(p.xyx)*.1031);
@@ -21,17 +21,24 @@ float noise(vec2 p){
   return fract((h.x+h.y)*h.z);
 }
 void main() {
-  vec2 p=uv;
-  p.y+=exitAmount*.135;
-  p.x+=pointer.x*.026+angle*.066;
-  p.y+=pointer.y*.019+angle*(p.x-.3)*.09;
+  // A moving edge splits the same exposure over a near and a distant leaf.
+  // Different magnification on each side makes forward travel visible on scroll.
+  float settle=smoothstep(.12,.88,intro);
+  float nearEdge=.72-.21*uv.y + .045*sin(4.*uv.y+phase*.28)
+     +.34*exitAmount+.13*(1.-settle)+pointer.x*.015;
+  float nearLeaf=smoothstep(nearEdge-.003,nearEdge+.003,uv.x);
+  float lens=mix(1.0,.76,nearLeaf)-exitAmount*mix(.13,.31,nearLeaf);
+  vec2 p=(uv-vec2(.68,.54))*lens+vec2(.68,.54);
+  p.x+=nearLeaf*(.038+.014*sin(phase*.78)) +pointer.x*.017;
+  p.y+=nearLeaf*(.17+.026*sin(phase*.51)) - exitAmount*.12 +pointer.y*.014;
+  p.y+=.038*sin(phase+uv.x*2.4);
   float x=p.x;
   float y=p.y;
   float bow=.62+.125*sin(4.25*x+.25)-.98*x*x+.28*x+.024*sin(7.3*x+phase);
   float spread=.09+.25*x+.078*sin(3.8*x);
   float closing=smoothstep(.05,.90,exitAmount);
-  bow=mix(bow,1.05,closing*.9);
-  spread=mix(spread,.048,closing);
+  bow=mix(bow,.90,closing*.42);
+  spread=mix(spread,.13,closing*.6);
   float d=(y-bow)/spread;
   float edge=smoothstep(.10,.78,x+.16*y);
   float field=edge*exp(-.55*d*d);
@@ -75,16 +82,14 @@ void main() {
   float grain=noise(gl_FragCoord.xy)-.5;
   col+=grain*.032;
 
-  float sweep=1.-smoothstep(.04,.30,abs(uv.x-(intro*1.62-.30)));
-  float opening=smoothstep(.34,.83,intro-.18*uv.x);
-  float glass=(flute-.5)*field;
-  vec2 bend=vec2(glass*.007+.027*sweep*(1.-intro),glass*.008);
-  bend+=vec2(.005*sin(uv.y*8.),.002)*(1.-opening);
-  vec4 masks=texture2D(ink,clamp(uv+bend,0.,1.));
-  float focus=opening*masks.r;
-  float leader=masks.g*(1.-smoothstep(.23,.52,intro));
-  float density=max(focus,leader)*(1.-paperOnly);
-  vec3 pigment=mix(vec3(.137,.122,.18),vec3(.21,.16,.31),field*.62);
-  col=mix(col,pigment,density);
+  float edgeDist=uv.x-nearEdge;
+  col*=1.-.13*exp(-abs(edgeDist)*38.)*(1.-nearLeaf);
+  col=mix(col,vec3(.98,.95,.87),.36*exp(-abs(edgeDist)*240.));
+  col=mix(col,paper,nearLeaf*.13);
+  // In the ident, the colours occupy the thin join between two sheets.
+  float slit=.01+1.3*smoothstep(.14,.79,intro);
+  float bearing=uv.y-.53+.22*(uv.x-.5);
+  float reveal=1.-smoothstep(slit,slit+.043,abs(bearing));
+  col=mix(paper*(.976+.024*step(0.,bearing))+grain*.025,col,reveal);
   gl_FragColor=vec4(col,1.);
 }`;
