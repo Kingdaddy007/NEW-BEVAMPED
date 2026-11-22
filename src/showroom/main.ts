@@ -1,6 +1,5 @@
 import './direction.css';
-import './projection.css';
-import { mountProjectionStudio } from './projection';
+import { mountFirstImpression } from './first-impression';
 import gsap from 'gsap';
 import { mountInstrument } from './instrument';
 
@@ -120,6 +119,11 @@ function exhibition() {
 }
 
 function previewControls() {
+  const excerpts: Record<string, string> = {
+    'studio-bespoke': 'studio-bespoke-projection',
+    laterite: 'laterite-reserve',
+    'xbd-collective': 'xbd-team',
+  };
   const dialog = document.querySelector<HTMLDialogElement>('#preview-dialog');
   if(!dialog)return;
   const video=dialog.querySelector('video')!;
@@ -128,7 +132,7 @@ function previewControls() {
   for(const button of all<HTMLButtonElement>('[data-preview]'))button.addEventListener('click',()=>{
     const project=button.closest('.project')!;
     title.textContent=project.querySelector('h3')!.textContent+' · Motion preview';
-    video.src='/flagship/media/'+button.dataset.preview+'.mp4';
+    video.src='/flagship/media/'+excerpts[button.dataset.preview!]+'.mp4';
     dialog.showModal();
     video.play().catch(()=>{ /* Native controls remain available. */ });
   });
@@ -143,7 +147,7 @@ function previewControls() {
     function play(){
       if(reduce.matches || sheet.inert || !matchMedia('(hover:hover)').matches)return;
       const token=++version;
-      if(!film.hasAttribute('src'))film.src='/flagship/media/'+sheet.pathname.split('/')[2]+'.mp4';
+      if(!film.hasAttribute('src'))film.src='/flagship/media/'+excerpts[sheet.pathname.split('/')[2]]+'.mp4';
       film.currentTime=0;
       film.play().then(()=>{if(token===version)sheet.classList.add('playing');}).catch(stop);
     }
@@ -208,11 +212,11 @@ function sectionLight(){
 }
 sectionLight();
 
-const stage=document.querySelector<HTMLElement>('.stage');
+const stage=document.querySelector<HTMLElement>('.impression');
 if(stage){
   exhibition();
   previewControls();
-  mountProjectionStudio(stage, reduce);
+  mountFirstImpression(stage, reduce);
 }
 const header=document.querySelector<HTMLElement>('.site-head');
 if(header){
