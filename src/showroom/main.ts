@@ -1,5 +1,5 @@
 import './direction.css';
-import { mountFirstImpression } from './first-impression';
+import { mountStudioMark } from './studio-mark';
 import gsap from 'gsap';
 import { mountInstrument } from './instrument';
 
@@ -212,11 +212,11 @@ function sectionLight(){
 }
 sectionLight();
 
-const stage=document.querySelector<HTMLElement>('.impression');
+const stage=document.querySelector<HTMLElement>('.studio-opening');
 if(stage){
   exhibition();
   previewControls();
-  mountFirstImpression(stage, reduce);
+  mountStudioMark(stage, reduce);
 }
 const header=document.querySelector<HTMLElement>('.site-head');
 if(header){
